@@ -1,8 +1,8 @@
 NAME = cub3d
 SRC = main.c
-OBJ = $(SRC:%.c=%.o)
-LIB = minilibx.a
-PATH_LIB = minilibx-linux/
+OBJ = main.o
+LIB = libft.a
+PATH_LIB = libft/
 HEADER = cub3d.h
 PATH_HEADER = header/
 CC = gcc
