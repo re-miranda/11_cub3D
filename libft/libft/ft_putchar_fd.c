@@ -1,21 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rmiranda <rmiranda@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/06 14:58:57 by rmiranda          #+#    #+#             */
-/*   Updated: 2023/09/07 14:31:12 by rmiranda         ###   ########.fr       */
+/*   Created: 2022/05/11 00:27:43 by rmiranda          #+#    #+#             */
+/*   Updated: 2022/05/11 00:29:56 by rmiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
-#include <stdio.h>
+#include "libft.h"
 
-int	main(void)
+void	ft_putchar_fd(char c, int fd)
 {
-	if (!parse())
-		ft_printf("ALL OK\n");
-	printf("Hello World\n");
+	write(fd, &c, 1);
 }

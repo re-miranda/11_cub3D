@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rmiranda <rmiranda@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/06 14:58:57 by rmiranda          #+#    #+#             */
-/*   Updated: 2023/09/07 14:31:12 by rmiranda         ###   ########.fr       */
+/*   Created: 2022/05/11 00:32:52 by rmiranda          #+#    #+#             */
+/*   Updated: 2022/05/13 02:13:57 by rmiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
-#include <stdio.h>
+#include "libft.h"
 
-int	main(void)
+void	ft_putendl_fd(char *s, int fd)
 {
-	if (!parse())
-		ft_printf("ALL OK\n");
-	printf("Hello World\n");
+	if (!s)
+		return ;
+	ft_putstr_fd(s, fd);
+	ft_putchar_fd('\n', fd);
 }

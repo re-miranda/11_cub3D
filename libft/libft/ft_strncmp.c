@@ -1,21 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rmiranda <rmiranda@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/06 14:58:57 by rmiranda          #+#    #+#             */
-/*   Updated: 2023/09/07 14:31:12 by rmiranda         ###   ########.fr       */
+/*   Created: 2022/04/13 20:52:57 by rmiranda          #+#    #+#             */
+/*   Updated: 2022/05/13 02:03:08 by rmiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
-#include <stdio.h>
+#include "libft.h"
 
-int	main(void)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	if (!parse())
-		ft_printf("ALL OK\n");
-	printf("Hello World\n");
+	if (!n)
+		return (0);
+	while (*s1 == *s2 && (n - 1) && *s1)
+	{
+		s1++;
+		s2++;
+		n--;
+	}
+	return ((unsigned char)*s1 - (unsigned char)*s2);
 }

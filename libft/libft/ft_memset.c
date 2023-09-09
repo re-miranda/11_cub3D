@@ -1,21 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rmiranda <rmiranda@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/06 14:58:57 by rmiranda          #+#    #+#             */
-/*   Updated: 2023/09/07 14:31:12 by rmiranda         ###   ########.fr       */
+/*   Created: 2022/04/26 19:35:54 by rmiranda          #+#    #+#             */
+/*   Updated: 2022/04/26 20:27:17 by rmiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
-#include <stdio.h>
+#include "libft.h"
 
-int	main(void)
+void	*ft_memset(void *s, int c, size_t n)
 {
-	if (!parse())
-		ft_printf("ALL OK\n");
-	printf("Hello World\n");
+	while (n)
+	{
+		n--;
+		((unsigned char *)s)[n] = (unsigned char)c;
+	}
+	return (s);
 }

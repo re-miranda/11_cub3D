@@ -1,21 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rmiranda <rmiranda@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/06 14:58:57 by rmiranda          #+#    #+#             */
-/*   Updated: 2023/09/07 14:31:12 by rmiranda         ###   ########.fr       */
+/*   Created: 2022/04/28 23:41:05 by rmiranda          #+#    #+#             */
+/*   Updated: 2022/05/13 04:11:29 by rmiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
-#include <stdio.h>
+#include "libft.h"
 
-int	main(void)
+void	*ft_calloc(size_t nelem, size_t elsize)
 {
-	if (!parse())
-		ft_printf("ALL OK\n");
-	printf("Hello World\n");
+	void	*allocated_space;
+	size_t	size_total;
+
+	size_total = elsize * nelem;
+	if (nelem != 0 && size_total / nelem != elsize)
+		return (NULL);
+	allocated_space = malloc(sizeof(char) * size_total);
+	if (allocated_space != NULL)
+	{
+		while (size_total--)
+			((char *)allocated_space)[size_total] = 0;
+	}
+	return (allocated_space);
 }

@@ -1,21 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rmiranda <rmiranda@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/06 14:58:57 by rmiranda          #+#    #+#             */
-/*   Updated: 2023/09/07 14:31:12 by rmiranda         ###   ########.fr       */
+/*   Created: 2022/04/27 00:07:44 by rmiranda          #+#    #+#             */
+/*   Updated: 2022/05/13 03:10:45 by rmiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
-#include <stdio.h>
+#include "libft.h"
 
-int	main(void)
+int	ft_atoi(const char *str)
 {
-	if (!parse())
-		ft_printf("ALL OK\n");
-	printf("Hello World\n");
+	int	sign;
+	int	output;
+
+	sign = 1;
+	output = 0;
+	while (*str == 32 || (*str >= 9 && *str <= 13))
+		str++;
+	if (*str == '-' || *str == '+')
+	{
+		if (*str == '-')
+			sign = -1;
+		str++;
+	}
+	while (*str >= '0' && *str <= '9')
+	{
+		output *= 10;
+		output += (int)(*str) - 48;
+		str++;
+	}
+	return (sign * output);
 }

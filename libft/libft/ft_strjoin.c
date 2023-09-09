@@ -1,21 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rmiranda <rmiranda@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/06 14:58:57 by rmiranda          #+#    #+#             */
-/*   Updated: 2023/09/07 14:31:12 by rmiranda         ###   ########.fr       */
+/*   Created: 2022/05/02 00:31:36 by rmiranda          #+#    #+#             */
+/*   Updated: 2022/05/13 02:10:53 by rmiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
-#include <stdio.h>
+#include "libft.h"
 
-int	main(void)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	if (!parse())
-		ft_printf("ALL OK\n");
-	printf("Hello World\n");
+	char	*strjoin;
+	size_t	i;
+
+	if (!s1 || !s2)
+		return (NULL);
+	i = 0;
+	strjoin = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	if (strjoin)
+	{
+		while (*s1)
+			strjoin[i++] = *s1++;
+		while (*s2)
+			strjoin[i++] = *s2++;
+		strjoin[i] = '\0';
+	}
+	return (strjoin);
 }

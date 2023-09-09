@@ -1,21 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   libft_gnl_printf.h                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rmiranda <rmiranda@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/06 14:58:57 by rmiranda          #+#    #+#             */
-/*   Updated: 2023/09/07 14:31:12 by rmiranda         ###   ########.fr       */
+/*   Created: 2022/08/27 08:17:07 by rmiranda          #+#    #+#             */
+/*   Updated: 2022/08/27 08:17:15 by rmiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
-#include <stdio.h>
+#ifndef LIBFT_GNL_PRINTF_H
+# define LIBFT_GNL_PRINTF_H
 
-int	main(void)
-{
-	if (!parse())
-		ft_printf("ALL OK\n");
-	printf("Hello World\n");
-}
+# include "./libft/libft.h"
+# include "./printf/ft_printf.h"
+# include "./gnl/get_next_line.h"
+
+#endif

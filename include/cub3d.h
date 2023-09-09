@@ -1,21 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rmiranda <rmiranda@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/06 14:58:57 by rmiranda          #+#    #+#             */
-/*   Updated: 2023/09/07 14:31:12 by rmiranda         ###   ########.fr       */
+/*   Created: 2023/09/06 14:59:06 by rmiranda          #+#    #+#             */
+/*   Updated: 2023/09/08 21:46:47 by rmiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
-#include <stdio.h>
+#ifndef CUB3D_H
+# define CUB3D_H
 
-int	main(void)
-{
-	if (!parse())
-		ft_printf("ALL OK\n");
-	printf("Hello World\n");
-}
+# include "define.h"
+# include "libft_gnl_printf.h"
+# include <stdio.h>
+
+int	parse(void);
+
+#endif

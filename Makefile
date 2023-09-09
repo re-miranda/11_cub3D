@@ -1,28 +1,34 @@
 NAME = cub3d
-SRC = main.c
-OBJ = main.o
-LIB = libft.a
-PATH_LIB = libft/
-HEADER = cub3d.h
-PATH_HEADER = header/
+SRC = $(wildcard $(SRC_DIR)/*.c) $(wildcard $(SRC_DIR)/parse/*.c)
+SRC_DIR = src
+OBJ = $(SRC:%.c=%.o)
+INCLUDE = $(wildcard $(INCLUDE_DIR)/*.h)
+INCLUDE_DIR = include libft
+LIBFT = $(LIBFT_DIR)/libft.a
+LIBFT_DIR = libft
 CC = gcc
-C_FLAGS = -Wall -Werror -Wextra -g3
+CFLAGS = -Wall -Wextra -Werror -g3
 RM = rm -rf
 
-%.o:	%.c $(LIB) $(HEADER)
-	$(CC) $(C_FLAGS) -c $< -o $@ $(PATH_LIB:%=-I%) $(PATH_HEADER:%=-I%)
+all: $(NAME)
 
-$(NAME): $(OBJ)
-	$(CC) $(C_FLAGS) -o $(NAME) $(OBJ)
+$(NAME): $(LIBFT) $(OBJ)
+	$(CC) $(CFLAGS) -o $@ $(OBJ) -L$(LIBFT_DIR) -lft
 
-all:	$(NAME)
+$(LIBFT):
+	make -C $(LIBFT_DIR)
+
+%.o: %.c $(INCLUDE)
+	$(CC) $(CFLAGS) -c $< -o $@ $(INCLUDE_DIR:%=-I%)
 
 clean:
 	$(RM) $(NAME)
+	make -C $(LIBFT_DIR) clean
 
-fclean:	clean
+fclean: clean
 	$(RM) $(OBJ)
+	make -C $(LIBFT_DIR) fclean
 
-re:	fclean all
+re: fclean all
 
-.PHONY:	all clean fclean re test_minilibx
+.PHONY: all clean fclean re

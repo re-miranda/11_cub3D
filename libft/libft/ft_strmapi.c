@@ -1,21 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rmiranda <rmiranda@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/06 14:58:57 by rmiranda          #+#    #+#             */
-/*   Updated: 2023/09/07 14:31:12 by rmiranda         ###   ########.fr       */
+/*   Created: 2022/05/10 23:11:26 by rmiranda          #+#    #+#             */
+/*   Updated: 2022/05/10 23:41:29 by rmiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
-#include <stdio.h>
+#include "libft.h"
 
-int	main(void)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	if (!parse())
-		ft_printf("ALL OK\n");
-	printf("Hello World\n");
+	char	*str;
+	size_t	i;
+
+	i = 0;
+	if (s == NULL || f == NULL)
+		return (NULL);
+	str = malloc(sizeof(char) * (ft_strlen(s) + 1));
+	if (str == NULL)
+		return (NULL);
+	while (s[i])
+	{
+		str[i] = f(i, s[i]);
+		i++;
+	}
+	str[i] = '\0';
+	return (str);
 }

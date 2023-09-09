@@ -1,17 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   get_whole_file.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rmiranda <rmiranda@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/06 14:59:06 by rmiranda          #+#    #+#             */
-/*   Updated: 2023/09/06 16:06:05 by rmiranda         ###   ########.fr       */
+/*   Created: 2022/10/16 06:12:50 by rmiranda          #+#    #+#             */
+/*   Updated: 2022/10/18 06:34:59 by rmiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
-# include <stdio.h>
+#include "get_next_line.h"
 
-#endif
+char	*get_whole_file(int fd)
+{
+	char	*swap;
+	char	*line;
+	char	*whole_file;
+
+	line = get_next_line(fd);
+	whole_file = ft_strdup("");
+	while (line)
+	{
+		swap = whole_file;
+		whole_file = ft_strjoin(whole_file, line);
+		free(line);
+		free(swap);
+		line = get_next_line(fd);
+	}
+	return (whole_file);
+}
