@@ -6,13 +6,14 @@
 /*   By: rmiranda <rmiranda@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 13:27:17 by rmiranda          #+#    #+#             */
-/*   Updated: 2023/09/07 13:28:22 by rmiranda         ###   ########.fr       */
+/*   Updated: 2023/09/10 13:57:32 by rmiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parse.h"
 
-int	parse_helper(void)
+int	parse_helper(t_map_info *info)
 {
+	(void)info;
 	return (0);
 }

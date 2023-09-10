@@ -6,7 +6,7 @@
 /*   By: rmiranda <rmiranda@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 14:59:06 by rmiranda          #+#    #+#             */
-/*   Updated: 2023/09/08 21:46:47 by rmiranda         ###   ########.fr       */
+/*   Updated: 2023/09/10 13:58:07 by rmiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,6 @@
 # include "libft_gnl_printf.h"
 # include <stdio.h>
 
-int	parse(void);
+int	parse(t_map_info *info);
 
 #endif
