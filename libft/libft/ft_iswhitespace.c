@@ -1,20 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isprint.c                                       :+:      :+:    :+:   */
+/*   ft_isspace.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rmiranda <rmiranda@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/12 17:35:14 by rmiranda          #+#    #+#             */
-/*   Updated: 2023/01/22 02:00:55 by rmiranda         ###   ########.fr       */
+/*   Created: 2023/01/22 01:53:52 by rmiranda          #+#    #+#             */
+/*   Updated: 2023/02/15 02:38:28 by rmiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isprint(int character)
+int	ft_iswhitespace(int character)
 {
-	if (character >= 32 && character < 127)
+	if (character == '\t' || character == '\n'
+		|| character == '\v' || character == '\f'
+		|| character == '\r' || character == ' ')
 		return (1);
 	return (0);
 }

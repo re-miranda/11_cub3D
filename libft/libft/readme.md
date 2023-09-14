@@ -2,18 +2,42 @@
 By: rmiranda | Renato Miranda Goncalves
 
 ## `ft_atoi`
-_`int	ft_atoi(const char *str)`_
+_`int	ft_atoi(char *str)`_
 ### DESCRIPTION
 The ft_atoi() function converts the initial portion of the string pointed to by str to int.  
 The call ft_atoi(str) shall be equivalent to:  
 `(int) strtol(str, (char **)NULL, 10)`  
 except that the handling of errors may differ. If the value cannot be represented, the behavior is undefined.  
-The string may begin with an arbitrary amount of white space (as determined by isspace(3)) followed by a single optional '+' or '-' sign.
+The string may begin with an arbitrary amount of white space (as determined by iswhitespace(3)) followed by a single optional '+' or '-' sign.
 The remainder of the string is converted to an int value in the obvious manner, stopping at the first character which is not a valid digit in the given base.  
 ### RETURN VALUE
 The ft_atoi() function returns the result of the conversion, unless the value would underflow or overflow.  If either case the behavior is undefined.
 ### ERRORS
 No errors are defined.
+
+## `ft_atoi_safe (NEW)`
+_`int	ft_atoi_safe(char *str, int *result_ptr)`_
+### DESCRIPTION
+The ft_atoi_safe() function converts the initial portion of the string pointed to by str to int.  
+The call ft_atoi_safe(str, result_ptr) shall be equivalent to ft_atoi(str) except that ft_atoi_safe() handles errors. This behavior is defined in ERRORS.  
+The string may begin with an arbitrary amount of white space (as determined by iswhitespace(3)) followed by a single optional '+' or '-' sign.
+The remainder of the string is converted to an int value in the obvious manner, stopping at the first character which is not a valid digit in the given base.  
+### RETURN VALUE
+The ft_atoi_safe() function returns 0, on success, or 1, in failure (see ERRORS); The result of the conversion is stored inside result_ptr.
+### ERRORS
+If the the value would underflow or overflow, the function shall return 1, and no value is stored in result_ptr.
+
+## `ft_atol_safe (NEW)`
+_`long long int	ft_atoi_safe(char *str, int *result_ptr)`_
+### DESCRIPTION
+The ft_atol_safe() function converts the initial portion of the string pointed to by str to long long int.  
+The call ft_atol_safe(str, result_ptr) shall be equivalent to ft_atoi_safe(str, result_ptr) except that ft_atol_safe() handles long long intergers.
+The string may begin with an arbitrary amount of white space (as determined by iswhitespace(3)) followed by a single optional '+' or '-' sign.
+The remainder of the string is converted to an long int value in the obvious manner, stopping at the first character which is not a valid digit in the given base.  
+### RETURN VALUE
+The ft_atol_safe() function returns 0, on success, or 1, in failure (see ERRORS); The result of the conversion is stored inside result_ptr.
+### ERRORS
+If the the value would underflow or overflow, the function shall return 1, and no value is stored in result_ptr.
 
 ## `ft_bzero`
 _`void	ft_bzero(void *s, size_t n)`_
@@ -86,6 +110,16 @@ The ft_isprint() function shall test whether c is a character of class print.
 The c argument is an int, the value of which the application shall ensure is a character representable as an unsigned char. If the argument has any other value, the behavior is undefined.
 ### RETURN VALUE
 The ft_isprint() function shall return non-zero, if c is a character code between 32 and 127 inclusive; otherwise, it shall return 0.
+### ERRORS
+No errors are defined.
+
+## `ft_iswhitespace`
+_`int	ft_iswhitespace(int character)`_
+### DESCRIPTION
+The ft_iswhitespace() function shall test whether c is a character of class space.  
+The c argument is an int, the value of which the application shall ensure is a character representable as an unsigned char. If the argument has any other value, the behavior is undefined.
+### RETURN VALUE
+The ft_iswhitespace() function shall return non-zero, if c is a character corresponding to \t, \n, \v, \f, \r or ' '; otherwise, it shall return 0.
 ### ERRORS
 No errors are defined.
 

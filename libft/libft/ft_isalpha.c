@@ -6,17 +6,17 @@
 /*   By: rmiranda <rmiranda@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 17:37:04 by rmiranda          #+#    #+#             */
-/*   Updated: 2022/04/12 17:37:05 by rmiranda         ###   ########.fr       */
+/*   Updated: 2023/01/22 02:01:32 by rmiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isalpha(int c)
+int	ft_isalpha(int character)
 {
-	if (c >= 'a' && c <= 'z')
+	if (character >= 'a' && character <= 'z')
 		return (1);
-	if (c >= 'A' && c <= 'Z')
+	if (character >= 'A' && character <= 'Z')
 		return (2);
 	return (0);
 }

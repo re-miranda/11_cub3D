@@ -6,15 +6,15 @@
 /*   By: rmiranda <rmiranda@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 17:36:00 by rmiranda          #+#    #+#             */
-/*   Updated: 2022/04/12 17:36:02 by rmiranda         ###   ########.fr       */
+/*   Updated: 2023/01/22 02:01:05 by rmiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isdigit(int c)
+int	ft_isdigit(int character)
 {
-	if (c >= '0' && c <= '9')
+	if (character >= '0' && character <= '9')
 		return (1);
 	return (0);
 }
