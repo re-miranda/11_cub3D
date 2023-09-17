@@ -1,23 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse.h                                            :+:      :+:    :+:   */
+/*   parse_validation.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rmiranda <rmiranda@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/06 16:03:07 by rmiranda          #+#    #+#             */
-/*   Updated: 2023/09/14 12:28:00 by rmiranda         ###   ########.fr       */
+/*   Created: 2023/09/14 12:25:46 by rmiranda          #+#    #+#             */
+/*   Updated: 2023/09/14 12:28:11 by rmiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PARSE_H
-# define PARSE_H
-# include "define.h"
-# include "libft_gnl_printf.h"
-# include <stdio.h>
-# include <fcntl.h>
+#include "parse.h"
 
-int	parse_helper(t_map_info *info_ptr, int map_fd);
-int	parse_validation(t_map_info *info_ptr);
-
-#endif
+int	parse_validation(t_map_info *info_ptr)
+{
+	(void)info_ptr;
+	return (0);
+}
