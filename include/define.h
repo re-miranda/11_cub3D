@@ -146,7 +146,7 @@ typedef struct s_game {
 	t_map_info	info;
 	t_vect		pos;
 	t_vect		dir;
-	double		fov;
+	t_vect		fov;
 	int			mmap_zoom;
 	int			mmap;
 	int			mouse_rot;
