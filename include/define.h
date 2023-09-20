@@ -6,20 +6,24 @@
 /*   By: gasouza <gasouza@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 15:26:33 by rmiranda          #+#    #+#             */
-/*   Updated: 2023/09/19 11:19:13 by gasouza          ###   ########.fr       */
+/*   Updated: 2023/09/20 14:25:35 by gasouza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef DEFINE_H
 # define DEFINE_H
 
-// Map content type definition
+// Map elements type definition
+//
+// Empty map element
 # define EMPTY 2
+// Floor map element
 # define FLOOR 0
+// Wall map element
 # define WALL 1
 
 // Map orientation definition
-// ---
+//
 // North
 # define NO 0
 // South
@@ -29,12 +33,15 @@
 // East
 # define EA 3
 
-// Mouse
+// Mouse buttons number definition
+//
+// Mouse scroll up button number
 # define MOUSE_SCROLL_UP 4
+// Mouse scroll down button number
 # define MOUSE_SCROLL_DOWN 5
 
 // Window definition
-// ---
+//
 // Window width
 # define WINDOW_W 620
 // Window height
@@ -43,8 +50,8 @@
 # define WINDOW_T "Cub3D - Gabriel Souza & Renato Miranda"
 
 // Minimap definition
-// ---
-// Mainimap Width
+//
+// Mainimap width
 # define MMAP_W 100
 // Minimap height
 # define MMAP_H 100
@@ -54,13 +61,13 @@
 # define MMAP_WCOLOR 0x00FFFFFF
 // Floor color on minimap
 # define MMAP_FCOLOR 0x00FFFFFF
-// Minimap min and initial zoom
+// Minimap min zoom (and initial zoom)
 # define MMAP_MIN_ZOOM 2
 // Minimap max zoom
 # define MMAP_MAX_ZOOM 20
 
 // Textures definition
-// ---
+//
 // Texture width
 # define TEXTURE_W 64
 // Texture height
@@ -79,17 +86,17 @@ typedef struct s_ivect {
 }	t_ivect;
 
 // Map information structure
-// ---
-// path_no: north texture path
-// path_so: south texture path
-// path_we: weast texture path
-// path_ea: east texture pasth
-// color_f: floor color
-// color_c: ceiling color
-// map: map matrix content
-// m_height: map height
-// m_width: map width
-// orient: player initial orientation (NO | SO | WE | EA)
+//
+// @param *path_no north texture path
+// @param *path_so south texture path
+// @param *path_we weast texture path
+// @param *path_ea east texture pasth
+// @param color_f floor color
+// @param color_c ceiling color
+// @param **map map matrix content
+// @param m_height map height
+// @param m_width map width
+// @param orient player initial orientation (NO | SO | WE | EA)
 typedef struct s_map_info {
 	char	*path_no;
 	char	*path_so;
@@ -105,14 +112,14 @@ typedef struct s_map_info {
 }	t_map_info;
 
 // Image information structure
-// ---
-// w: image width
-// h: image height
-// mlx: mlx data pointer
-// data: image content buffer
-// bpp: bit per pixel
-// ls: line size
-// path: image path
+//
+// @param w image width
+// @param h image height
+// @param *mlx mlx data pointer
+// @param *data image content buffer
+// @param bpp bit per pixel
+// @param ls line size
+// @param *path image path
 typedef struct s_img {
 	int		w;
 	int		h;
@@ -125,19 +132,19 @@ typedef struct s_img {
 }	t_img;
 
 // Game information structure
-// ---
-// mlx: mlx data pointer
-// window: mlx window pointer
-// screen: screen image buffer
-// texture: array of textures
-// info: configuration and map information structure
-// pos: player position on map
-// dir: player orientation direction
-// fov: game field of view
-// mmap_zoom: minimap current zoom
-// mmap: minimap enable/disable
-// rot_speed: rotation speed
-// move_speed: movimentation speed
+//
+// @param *mlx mlx data pointer
+// @param *window mlx window pointer
+// @param screen screen image buffer
+// @param texture[4] array of textures
+// @param info configuration and map information structure
+// @param pos player position on map
+// @param dir player orientation direction
+// @param fov game field of view
+// @param mmap_zoom minimap current zoom
+// @param mmap minimap enable/disable
+// @param rot_speed rotation speed
+// @param move_speed movimentation speed
 typedef struct s_game {
 	void		*mlx;
 	void		*window;
