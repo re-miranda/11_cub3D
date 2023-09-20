@@ -6,7 +6,7 @@
 /*   By: gasouza <gasouza@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 10:25:07 by gasouza           #+#    #+#             */
-/*   Updated: 2023/09/20 17:00:24 by gasouza          ###   ########.fr       */
+/*   Updated: 2023/09/20 17:10:20 by gasouza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,9 +70,9 @@ void	fov_set_y(t_game *game, double y);
 
 // Image helpers
 //
-// Get image integer color at x,y position
-int		img_get_color_at(t_img *img, int x, int y);
-// Get image pixel data address at x,y position
-char	*img_get_pixel_at(t_img *img, int x, int y);
+// Get image integer color at 'x,y' position
+int		img_color_get_at(t_img *img, int x, int y);
+// Get image pixel data address at 'x,y' position
+char	*img_pixel_get_at(t_img *img, int x, int y);
 
 #endif
