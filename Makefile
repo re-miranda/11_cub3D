@@ -28,14 +28,14 @@ $(LIBFT):
 %.o: %.c $(INCLUDE)
 	$(CC) $(CFLAGS) -c $< -o $@ $(INCLUDE_DIR:%=-I%)
 
-clean:
-	$(RM) $(NAME)
+clean: clean
+	$(RM) $(OBJ)
 	make -C $(LIBFT_DIR) clean
 
-fclean: clean
-	$(RM) $(OBJ)
+fclean:
+	$(RM) $(NAME)
 	make -C $(LIBFT_DIR) fclean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re run valgrind
