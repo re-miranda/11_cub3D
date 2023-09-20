@@ -89,7 +89,7 @@ typedef struct s_ivect {
 // map: map matrix content
 // m_height: map height
 // m_width: map width
-// orient: player orientation start (NO | SO | WE | EA)
+// orient: player initial orientation (NO | SO | WE | EA)
 typedef struct s_map_info {
 	char	*path_no;
 	char	*path_so;
@@ -125,6 +125,7 @@ typedef struct s_img {
 }	t_img;
 
 // Game information structure
+// ---
 // mlx: mlx data pointer
 // window: mlx window pointer
 // screen: screen image buffer
