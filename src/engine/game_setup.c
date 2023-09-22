@@ -6,7 +6,7 @@
 /*   By: gasouza <gasouza@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 14:39:32 by gasouza           #+#    #+#             */
-/*   Updated: 2023/09/20 16:04:22 by gasouza          ###   ########.fr       */
+/*   Updated: 2023/09/22 10:30:02 by gasouza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static void	game_set_default_values(t_game *game)
 	int	orient;
 
 	orient = 4;
-	while (--orient)
+	while (orient--)
 	{
 		game->texture[orient].mlx = NULL;
 		game->texture[orient].data = NULL;

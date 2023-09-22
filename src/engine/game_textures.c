@@ -6,7 +6,7 @@
 /*   By: gasouza <gasouza@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 10:14:26 by gasouza           #+#    #+#             */
-/*   Updated: 2023/09/20 16:03:38 by gasouza          ###   ########.fr       */
+/*   Updated: 2023/09/22 10:29:46 by gasouza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	game_textures_load(t_game *game)
 	int		orient;
 
 	orient = 4;
-	while (--orient)
+	while (orient--)
 	{
 		img = &game->texture[orient];
 		path = orient_img_path(game, orient);
@@ -55,7 +55,7 @@ void	game_textures_destroy(t_game *game)
 	t_img	*img;
 
 	orient = 4;
-	while (--orient)
+	while (orient--)
 	{
 		img = &game->texture[orient];
 		if (img->mlx == NULL)
