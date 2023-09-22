@@ -28,11 +28,11 @@ $(LIBFT):
 %.o: %.c $(INCLUDE)
 	$(CC) $(CFLAGS) -c $< -o $@ $(INCLUDE_DIR:%=-I%)
 
-clean: clean
+clean:
 	$(RM) $(OBJ)
 	make -C $(LIBFT_DIR) clean
 
-fclean:
+fclean: clean
 	$(RM) $(NAME)
 	make -C $(LIBFT_DIR) fclean
 
