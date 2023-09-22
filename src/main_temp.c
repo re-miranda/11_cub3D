@@ -6,7 +6,7 @@
 /*   By: gasouza <gasouza@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 09:01:33 by gasouza           #+#    #+#             */
-/*   Updated: 2023/09/20 17:23:05 by gasouza          ###   ########.fr       */
+/*   Updated: 2023/09/22 09:24:34 by gasouza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void temp_config_create(t_game *game)
 	game->info.m_width = map_w;
 	game->info.m_height = map_h;
 
-	printf("Temp config: created!\n");
+	printf("Temporary Configuration: created!\n");
 }
 
 void temp_config_destroy(t_game *game)
@@ -82,7 +82,7 @@ void temp_config_destroy(t_game *game)
 	
 	free(game->info.map);
 
-	printf("Temp config: destroyed!\n");
+		printf("Temporary Configuration: destroyed!\n");
 }
 
 void print_temp_map(t_game *game)
@@ -107,13 +107,24 @@ int	main()
 	t_game	game;
 
 	temp_config_create(&game);
-	print_temp_map(&game);
+	
 	if(!game_setup(&game))
+	{
+		temp_config_destroy(&game);
 		return (1);
+	}
+	printf("Game Setup: created!\n");
+		
 	if(game_textures_load(&game))
 		printf("Textures: loaded!\n");
+		
 	game_textures_destroy(&game);
 	printf("Textures: destroyed!\n");
+	
+	game_destroy(&game);
+	printf("Game Setup: destroyed!\n");
+	
 	temp_config_destroy(&game);
+	
 	return (0);
 }

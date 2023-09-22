@@ -6,7 +6,7 @@
 /*   By: gasouza <gasouza@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 21:51:27 by gasouza           #+#    #+#             */
-/*   Updated: 2023/09/20 17:01:28 by gasouza          ###   ########.fr       */
+/*   Updated: 2023/09/22 09:21:07 by gasouza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,7 @@ int		game_textures_load(t_game *game);
 void	game_textures_destroy(t_game *game);
 // Setup game default values, mlx configuration and screen image buffer
 int		game_setup(t_game *game);
+// Destroy game screen buffer image, window, display and mlx
+void	game_destroy(t_game *game);
 
 #endif
