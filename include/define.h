@@ -6,7 +6,7 @@
 /*   By: gasouza <gasouza@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 15:26:33 by rmiranda          #+#    #+#             */
-/*   Updated: 2023/09/20 14:25:35 by gasouza          ###   ########.fr       */
+/*   Updated: 2023/09/22 21:36:58 by gasouza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,5 +160,36 @@ typedef struct s_game {
 	double		rot_speed;
 	double		move_speed;
 }	t_game;
+
+// Raycasting information structure
+//
+// @param ray_dir ray direction vector
+// @param delta_dist length of ray from one x or y-side to next x or y-side
+// @param side_dist length of ray from current position to next x or y-side
+// @param step what direction to step in x or y-direction (either +1 or -1)
+// @param pos which position of the map we're in
+// @param side was a NS or a EW wall hit? (1 NS and 0 EW)
+// @param orient which orientation wall was hit (NO, SO, WE, EA)
+// @param perp_wall_dist perpendicular wall distance
+// @param wall_x_hit where exactly the wall was hit
+// @param wall_line_h wall lenght to drawn on screen
+// @param wall_draw_start height on the screen will the wall start to be drawn
+// @param wall_draw_end height on the screen will the wall stop to be drawn
+// @param rate proportion (new scale) of the texture to be drawn
+typedef struct s_raycast {
+	t_vect	ray_dir;
+	t_vect	delta_dist;
+	t_vect	side_dist;
+	t_ivect	step;
+	t_ivect	pos;
+	int		side;
+	int		orient;
+	double	perp_wall_dist;
+	double	wall_x_hit;
+	int		wall_line_h;
+	int		wall_draw_start;
+	int		wall_draw_end;
+	double	rate;
+}	t_raycast;
 
 #endif

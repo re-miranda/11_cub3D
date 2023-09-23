@@ -8,7 +8,7 @@ INCLUDE_DIR = include libft
 LIBFT = $(LIBFT_DIR)/libft.a
 LIBFT_DIR = libft
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 RM = rm -rf
 
 all: $(NAME)

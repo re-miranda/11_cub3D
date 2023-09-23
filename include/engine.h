@@ -6,7 +6,7 @@
 /*   By: gasouza <gasouza@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 21:51:27 by gasouza           #+#    #+#             */
-/*   Updated: 2023/09/22 09:21:07 by gasouza          ###   ########.fr       */
+/*   Updated: 2023/09/22 21:48:15 by gasouza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,28 @@ void	game_textures_destroy(t_game *game);
 int		game_setup(t_game *game);
 // Destroy game screen buffer image, window, display and mlx
 void	game_destroy(t_game *game);
+// Perform keys listener
+int		key_listener(int key, t_game *game);
+// Render the game screen with your current status
+void	render_the_screen(t_game *game);
+
+// Raycasting
+//
+// Perform raycasting
+void	raycasting(t_game *game);
+// Perform DDA (Digital Differential Analyzer) algorithm
+void	calculate_dda(t_game *game, t_raycast *rc);
+// Calculate the ray direction on current screen column
+void	calculate_ray_direction(t_game *game, t_raycast *rc, int screen_col);
+// Calculate the lenght of the ray
+void	calculate_delta_distance(t_raycast *rc);
+// Calculate step and side distance
+void	calculate_step_and_side_dist(t_game *game, t_raycast *rc);
+// Calculate perpendicular wall distance
+void	calculate_perpendicular_wall_distance(t_raycast *rc);
+// Calculate where exactly the wall was hit
+void	calculate_where_wall_was_hit(t_game *game, t_raycast *rc);
+// Draw current raycasting screen column
+void	draw_screen_column(t_game *game, t_raycast *rc, int screen_column);
 
 #endif
