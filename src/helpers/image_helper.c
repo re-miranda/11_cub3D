@@ -1,26 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   image_helper.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gasouza <gasouza@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/06 14:59:06 by rmiranda          #+#    #+#             */
-/*   Updated: 2023/09/20 15:33:09 by gasouza          ###   ########.fr       */
+/*   Created: 2023/09/20 08:43:24 by gasouza           #+#    #+#             */
+/*   Updated: 2023/09/20 17:11:45 by gasouza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#include "cub3d.h"
 
-# include "libft_gnl_printf.h"
-# include <stdio.h>
-# include <math.h>
-# include "mlx.h"
-# include "define.h"
-# include "helpers.h"
-# include "engine.h"
+char	*img_pixel_get_at(t_img *img, int x, int y)
+{
+	char	*pixel;
 
-int	parse(t_map_info *info_ptr, char *map_path);
+	pixel = NULL;
+	if (img)
+		pixel = img->data + ((img->ls * x) + (y * (img->bpp / 8)));
+	return (pixel);
+}
 
-#endif
+int	img_color_get_at(t_img *img, int x, int y)
+{
+	int	index;
+	int	color;
+
+	color = 0;
+	if (img)
+	{
+		index = x * img->ls + y * img->bpp / 8;
+		color = (*(int *)(img->data + index));
+	}
+	return (color);
+}

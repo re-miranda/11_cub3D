@@ -1,26 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   config_helper.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gasouza <gasouza@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/06 14:59:06 by rmiranda          #+#    #+#             */
-/*   Updated: 2023/09/20 15:33:09 by gasouza          ###   ########.fr       */
+/*   Created: 2023/09/18 23:32:29 by gasouza           #+#    #+#             */
+/*   Updated: 2023/09/19 10:48:20 by gasouza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#include "cub3d.h"
 
-# include "libft_gnl_printf.h"
-# include <stdio.h>
-# include <math.h>
-# include "mlx.h"
-# include "define.h"
-# include "helpers.h"
-# include "engine.h"
+double	game_m_speed(t_game *game)
+{
+	return (game->move_speed);
+}
 
-int	parse(t_map_info *info_ptr, char *map_path);
+double	game_r_speed(t_game *game)
+{
+	return (game->rot_speed);
+}
 
-#endif
+int	game_f_color(t_game *game)
+{
+	return (game->info.color_f);
+}
+
+int	game_c_color(t_game *game)
+{
+	return (game->info.color_c);
+}
+
+char	game_start_orient(t_game *game)
+{
+	return (game->info.orient);
+}

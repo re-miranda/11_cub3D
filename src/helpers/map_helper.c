@@ -1,26 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   map_helpers.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gasouza <gasouza@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/06 14:59:06 by rmiranda          #+#    #+#             */
-/*   Updated: 2023/09/20 15:33:09 by gasouza          ###   ########.fr       */
+/*   Created: 2023/09/19 09:18:55 by gasouza           #+#    #+#             */
+/*   Updated: 2023/09/19 10:03:38 by gasouza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#include "cub3d.h"
 
-# include "libft_gnl_printf.h"
-# include <stdio.h>
-# include <math.h>
-# include "mlx.h"
-# include "define.h"
-# include "helpers.h"
-# include "engine.h"
+/**
+ * Map comment
+*/
+char	map_at(t_game *game, int x, int y)
+{
+	return (game->info.map[y][x]);
+}
 
-int	parse(t_map_info *info_ptr, char *map_path);
+int	map_width(t_game *game)
+{
+	return (game->info.m_width);
+}
 
-#endif
+int	map_height(t_game *game)
+{
+	return (game->info.m_height);
+}

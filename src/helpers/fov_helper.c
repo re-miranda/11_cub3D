@@ -1,26 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   fov_helper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gasouza <gasouza@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/06 14:59:06 by rmiranda          #+#    #+#             */
-/*   Updated: 2023/09/20 15:33:09 by gasouza          ###   ########.fr       */
+/*   Created: 2023/09/19 10:33:35 by gasouza           #+#    #+#             */
+/*   Updated: 2023/09/20 17:12:35 by gasouza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#include "cub3d.h"
 
-# include "libft_gnl_printf.h"
-# include <stdio.h>
-# include <math.h>
-# include "mlx.h"
-# include "define.h"
-# include "helpers.h"
-# include "engine.h"
+double	fov_get_x(t_game *game)
+{
+	return (game->fov.x);
+}
 
-int	parse(t_map_info *info_ptr, char *map_path);
+double	fov_get_y(t_game *game)
+{
+	return (game->fov.y);
+}
 
-#endif
+void	fov_set_x(t_game *game, double x)
+{
+	game->fov.x = x;
+}
+
+void	fov_set_y(t_game *game, double y)
+{
+	game->fov.y = y;
+}
