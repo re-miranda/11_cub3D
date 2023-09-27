@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_temp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gasouza <gasouza@student.42sp.org.br>      +#+  +:+       +#+        */
+/*   By: rmiranda <rmiranda@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 09:01:33 by gasouza           #+#    #+#             */
-/*   Updated: 2023/09/22 21:53:17 by gasouza          ###   ########.fr       */
+/*   Updated: 2023/09/27 03:27:45 by rmiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,34 @@
 
 static void temp_config_create(t_game *game);
 static void temp_config_destroy(t_game *game);
+
+static void	print_map(t_map_info info)
+{
+	int	index;
+	int	index2;
+	int	mask;
+
+	printf("%s\n", info.path_no);
+	printf("%s\n", info.path_so);
+	printf("%s\n", info.path_we);
+	printf("%s\n", info.path_ea);
+	mask = 0x000000ff;
+	printf("F %i, %i, %i, %i\n", info.color_f>>24, mask & info.color_f>>16, mask & info.color_f>>8, mask & info.color_f);
+	printf("C %i, %i, %i, %i\n", info.color_c>>24, mask & info.color_c>>16, mask & info.color_c>>8, mask & info.color_c);
+	if (info.map)
+	{
+		index = 0;
+		while (index < info.m_height)
+		{
+			index2 = 0;
+			while (index2 < info.m_width)
+				printf("%i", (int)info.map[index][index2++]);
+			printf("\n");
+			index++;
+		}
+	}
+	printf("\n");
+}
 
 int	main()
 {
@@ -30,6 +58,7 @@ int	main()
 		return (1);
 	}
 	printf("Game Setup: created!\n");
+	print_map(game.info);
 		
 	if(game_textures_load(&game))
 		printf("Textures: loaded!\n");
@@ -59,8 +88,8 @@ int	main()
 
 static void temp_config_create(t_game *game)
 {
-	int map_w = 16;
-	int	map_h = 16;
+	game->info.m_width = 16;
+	game->info.m_height = 16;
 
 	game->info.path_no = strdup("./img/red.xpm");
 	game->info.path_so = strdup("./img/yellow.xpm");
@@ -86,13 +115,13 @@ static void temp_config_create(t_game *game)
 		{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
 	};
 	
-	game->info.map = malloc(map_h * sizeof(char *));
+	game->info.map = malloc(game->info.m_height * sizeof(char *));
 	game->info.color_c = 0x00000540;	// Blue
 	game->info.color_f = 0x003d1100;	// Brown
 
-	for (int x = 0; x < map_h; x++) {
-		game->info.map[x] = malloc(map_w);
-		for (int y = 0; y < map_w; y++) {
+	for (int x = 0; x < game->info.m_height; x++) {
+		game->info.map[x] = malloc(game->info.m_width);
+		for (int y = 0; y < game->info.m_width; y++) {
 
 			char element = map[y][x];
 			
@@ -108,8 +137,8 @@ static void temp_config_create(t_game *game)
 		}
 	}
 
-	game->info.m_width = map_w;
-	game->info.m_height = map_h;
+	game->info.m_width = game->info.m_width;
+	game->info.m_height = game->info.m_height;
 
 	printf("Temporary Configuration: created!\n");
 }
