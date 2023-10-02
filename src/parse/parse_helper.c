@@ -6,30 +6,30 @@
 /*   By: rmiranda <rmiranda@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 13:27:17 by rmiranda          #+#    #+#             */
-/*   Updated: 2023/10/02 20:28:04 by rmiranda         ###   ########.fr       */
+/*   Updated: 2023/10/02 20:34:44 by rmiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parse.h"
-#define SKIP_NEWLINE 1
+#define SKIP_NL 1
 #define KEEP_NEWLINE 0
 #define C 1
 #define F 0
 
 static char	*get_next_line(int fd, int skip_nl);
 static int	add_line_to_map(t_map_info *info_ptr, char *line);
-static int	str_to_int_rgb(char *line, int flag_floor_or_ceiling);
+static int	str_intrgb(char *line, int flag_floor_or_ceiling);
 static char	*trim_nl(char *line);
 
 int	parse_helper(t_map_info *info_ptr, int map_fd)
 {
-	info_ptr->path_no = trim_nl(ft_strdup(get_next_line(map_fd, SKIP_NEWLINE)));
-	info_ptr->path_so = trim_nl(ft_strdup(get_next_line(map_fd, SKIP_NEWLINE)));
-	info_ptr->path_we = trim_nl(ft_strdup(get_next_line(map_fd, SKIP_NEWLINE)));
-	info_ptr->path_ea = trim_nl(ft_strdup(get_next_line(map_fd, SKIP_NEWLINE)));
-	info_ptr->color_f = trim_nl(str_to_int_rgb(get_next_line(map_fd, SKIP_NEWLINE), F));
-	info_ptr->color_c = trim_nl(str_to_int_rgb(get_next_line(map_fd, SKIP_NEWLINE), C));
-	add_line_to_map(info_ptr, get_next_line(map_fd, SKIP_NEWLINE));
+	info_ptr->path_no = trim_nl(ft_strdup(get_next_line(map_fd, SKIP_NL)));
+	info_ptr->path_so = trim_nl(ft_strdup(get_next_line(map_fd, SKIP_NL)));
+	info_ptr->path_we = trim_nl(ft_strdup(get_next_line(map_fd, SKIP_NL)));
+	info_ptr->path_ea = trim_nl(ft_strdup(get_next_line(map_fd, SKIP_NL)));
+	info_ptr->color_f = trim_nl(str_intrgb(get_next_line(map_fd, SKIP_NL), F));
+	info_ptr->color_c = trim_nl(str_intrgb(get_next_line(map_fd, SKIP_NL), C));
+	add_line_to_map(info_ptr, get_next_line(map_fd, SKIP_NL));
 	while (!add_line_to_map(info_ptr, get_next_line(map_fd, KEEP_NEWLINE)))
 		;
 	while (get_next_line(map_fd, KEEP_NEWLINE))
@@ -70,7 +70,7 @@ static int	add_line_to_map(t_map_info *info_ptr, char *line)
 	return (0);
 }
 
-static int	str_to_int_rgb(char *line, int flag__floor_or_ceiling)
+static int	str_intrgb(char *line, int flag__floor_or_ceiling)
 {
 	int	index;
 	int	color_value;

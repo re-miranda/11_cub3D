@@ -1,6 +1,6 @@
 NAME = cub3d
 # SRC = $(wildcard $(SRC_DIR)/*.c) $(wildcard $(SRC_DIR)/parse/*.c) 
-SRC = $(wildcard $(SRC_DIR)/*.c) $(wildcard $(SRC_DIR)/engine/*.c) $(wildcard $(SRC_DIR)/helpers/*.c)
+SRC = $(wildcard $(SRC_DIR)/*.c) $(wildcard $(SRC_DIR)/engine/*.c) $(wildcard $(SRC_DIR)/helpers/*.c) $(wildcard $(SRC_DIR)/parse/*.c)
 SRC_DIR = src
 OBJ = $(SRC:%.c=%.o)
 INCLUDE = $(wildcard $(INCLUDE_DIR)/*.h)
