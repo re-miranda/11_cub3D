@@ -20,7 +20,7 @@ valgrind: $(NAME)
 	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME)
 
 $(NAME): $(LIBFT) $(OBJ)
-	$(CC) $(CFLAGS) -o $@ $(OBJ) -L$(LIBFT_DIR) -lmlx -lXext -lX11 -lm
+	$(CC) $(CFLAGS) -o $@ $(OBJ) -L$(LIBFT_DIR) -lft -lmlx -lXext -lX11 -lm
 
 $(LIBFT):
 	make -C $(LIBFT_DIR)
