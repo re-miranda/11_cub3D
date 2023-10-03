@@ -6,11 +6,12 @@
 /*   By: rmiranda <rmiranda@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 13:27:17 by rmiranda          #+#    #+#             */
-/*   Updated: 2023/10/02 22:44:48 by rmiranda         ###   ########.fr       */
+/*   Updated: 2023/10/03 15:38:35 by rmiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parse.h"
+# include "libft_gnl_printf.h"
 #define SKIP_NL 1
 #define KEEP_NEWLINE 0
 #define C 1
