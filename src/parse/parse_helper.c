@@ -6,7 +6,7 @@
 /*   By: rmiranda <rmiranda@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 13:27:17 by rmiranda          #+#    #+#             */
-/*   Updated: 2023/10/02 20:34:44 by rmiranda         ###   ########.fr       */
+/*   Updated: 2023/10/02 22:44:48 by rmiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ int	parse_helper(t_map_info *info_ptr, int map_fd)
 	info_ptr->path_so = trim_nl(ft_strdup(get_next_line(map_fd, SKIP_NL)));
 	info_ptr->path_we = trim_nl(ft_strdup(get_next_line(map_fd, SKIP_NL)));
 	info_ptr->path_ea = trim_nl(ft_strdup(get_next_line(map_fd, SKIP_NL)));
-	info_ptr->color_f = trim_nl(str_intrgb(get_next_line(map_fd, SKIP_NL), F));
-	info_ptr->color_c = trim_nl(str_intrgb(get_next_line(map_fd, SKIP_NL), C));
+	info_ptr->color_f = str_intrgb(get_next_line(map_fd, SKIP_NL), F);
+	info_ptr->color_c = str_intrgb(get_next_line(map_fd, SKIP_NL), C);
 	add_line_to_map(info_ptr, get_next_line(map_fd, SKIP_NL));
 	while (!add_line_to_map(info_ptr, get_next_line(map_fd, KEEP_NEWLINE)))
 		;
