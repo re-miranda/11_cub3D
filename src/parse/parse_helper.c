@@ -6,7 +6,7 @@
 /*   By: rmiranda <rmiranda@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 13:27:17 by rmiranda          #+#    #+#             */
-/*   Updated: 2023/10/03 20:42:59 by coder            ###   ########.fr       */
+/*   Updated: 2023/10/03 18:04:04 by rmiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static int	add_line_to_map(t_map_info *info_ptr, char *line);
 static int	str_intrgb(char *line, int flag_floor_or_ceiling);
 static char	*trim_nl(char *line);
 
-int	parse_helper(t_map_info *info_ptr, int map_fd)
+int	parse_getter(t_map_info *info_ptr, int map_fd)
 {
 	info_ptr->path_no = trim_nl(ft_strdup(get_next_line(map_fd, SKIP_NL)));
 	info_ptr->path_so = trim_nl(ft_strdup(get_next_line(map_fd, SKIP_NL)));

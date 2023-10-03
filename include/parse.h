@@ -6,7 +6,7 @@
 /*   By: rmiranda <rmiranda@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 16:03:07 by rmiranda          #+#    #+#             */
-/*   Updated: 2023/10/03 15:31:31 by rmiranda         ###   ########.fr       */
+/*   Updated: 2023/10/03 18:04:04 by rmiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <stdio.h>
 # include <fcntl.h>
 
-int	parse_helper(t_map_info *info_ptr, int map_fd);
+int	parse_getter(t_map_info *info_ptr, int map_fd);
 int	map_validation(t_map_info *info_ptr);
 
 #endif

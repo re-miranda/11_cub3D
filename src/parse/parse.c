@@ -6,7 +6,7 @@
 /*   By: rmiranda <rmiranda@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 13:23:34 by rmiranda          #+#    #+#             */
-/*   Updated: 2023/10/03 15:31:32 by rmiranda         ###   ########.fr       */
+/*   Updated: 2023/10/03 18:04:04 by rmiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	parse(t_map_info *info_ptr, char *map_path)
 	if (fd == -1)
 		success_flag = printf("Failed to open file: ");
 	ft_memset(info_ptr, 0, sizeof(t_map_info));
-	if (!success_flag && parse_helper(info_ptr, fd))
+	if (!success_flag && parse_getter(info_ptr, fd))
 		success_flag = printf("Failed to load parser: ");
 	close(fd);
 	if (!success_flag && map_validation(info_ptr))
