@@ -6,7 +6,7 @@
 /*   By: rmiranda <rmiranda@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 12:25:46 by rmiranda          #+#    #+#             */
-/*   Updated: 2023/10/03 16:44:59 by rmiranda         ###   ########.fr       */
+/*   Updated: 2023/10/03 16:46:26 by rmiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #define ALLOWED_CHARACTERS " 01NWSE"
 
 static int	lexical_analysis(char **map, int map_height);
-static int	get_orient(char **map, int map_height, char *orient_ptr);
+static int	get_orient(char **map, int map_height, char *orient_ptr, t_vect *pos);
 static char	**normalize_map(t_map_info *info_ptr);
 // static int	find_unclosed_wall(char **map);
 
