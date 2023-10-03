@@ -6,7 +6,7 @@
 /*   By: rmiranda <rmiranda@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 12:25:46 by rmiranda          #+#    #+#             */
-/*   Updated: 2023/10/03 16:36:48 by rmiranda         ###   ########.fr       */
+/*   Updated: 2023/10/03 16:44:59 by rmiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	map_validation(t_map_info *info_ptr)
 	index = 0;
 	if (lexical_analysis(info_ptr->map, info_ptr->m_height))
 		return (printf("Invalid character or empty line in map: "));
-	if (get_orient(info_ptr->map, info_ptr->m_height, &info_ptr->orient) != 1)
+	if (get_orient(info_ptr->map, info_ptr->m_height, &info_ptr->orient, &info_ptr->pos) != 1)
 		return (printf("More than one orientation instruction in map: "));
 	while (index < info_ptr->m_height)
 	{
@@ -106,25 +106,30 @@ static int	lexical_analysis(char **map, int map_height)
 	return (0);
 }
 
-static int	get_orient(char **map, int map_height, char *orient_ptr)
+static int	get_orient(char **map, int map_height, char *orient_ptr, t_vect *pos)
 {
 	char	*map_line;
-	int		index;
+	int		xx;
+	int		yy;
 	int		return_value;
 
-	index = 0;
+	xx = 0;
+	yy = 0;
 	return_value = 0;
-	while (index < map_height)
+	while (xx < map_height)
 	{
-		map_line = map[index++];
-		while (map_line[0])
+		map_line = map[xx++];
+		while (map_line[yy])
 		{
-			if (ft_isalpha(map_line[0]))
+			if (ft_isalpha(map_line[yy]))
 			{
-				*orient_ptr = map_line[0];
+				pos->y = yy;
+				pos->x = xx;
+
+				*orient_ptr = map_line[yy];
 				return_value++;
 			}
-			map_line++;
+			yy++;
 		}
 	}
 	return (return_value);
