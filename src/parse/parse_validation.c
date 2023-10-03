@@ -6,7 +6,7 @@
 /*   By: rmiranda <rmiranda@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 12:25:46 by rmiranda          #+#    #+#             */
-/*   Updated: 2023/10/03 16:48:26 by rmiranda         ###   ########.fr       */
+/*   Updated: 2023/10/03 18:14:53 by rmiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static void	space_injest_func(unsigned int nb, char *c)
 		c[0] = EMPTY;
 }
 
-char	**normalize_map(t_map_info *info_ptr)
+static char	**normalize_map(t_map_info *info_ptr)
 {
 	int		index;
 	char	**temp;
