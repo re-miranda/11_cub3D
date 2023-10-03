@@ -6,11 +6,12 @@
 /*   By: rmiranda <rmiranda@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 09:01:33 by gasouza           #+#    #+#             */
-/*   Updated: 2023/09/27 03:27:45 by rmiranda         ###   ########.fr       */
+/*   Updated: 2023/10/03 16:16:35 by rmiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+#include "parse.h"
 #include <string.h>
 
 static void temp_config_create(t_game *game);
@@ -44,13 +45,17 @@ static void	print_map(t_map_info info)
 	printf("\n");
 }
 
-int	main()
+int	main(int argc, char *argv[])
 {
 	t_game	game;
 
 	// Game startup functions
 	// ---
-	temp_config_create(&game);
+	// temp_config_create(&game);
+	if (argc != 2 && printf("Usage: ./cub3d PATH_TO_MAP\n"))
+		return (-1);
+	if (parse(&game.info, argv[1]) && printf("Error: Could not parse the map.\n"))
+		return (-2);
 	
 	if(!game_setup(&game))
 	{
