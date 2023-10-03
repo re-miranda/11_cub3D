@@ -14,7 +14,7 @@ RM = rm -rf
 all: $(NAME)
 
 run: all
-	./$(NAME)
+	./$(NAME) map/subjects_map.cub
 
 valgrind: $(NAME)
 	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME)
