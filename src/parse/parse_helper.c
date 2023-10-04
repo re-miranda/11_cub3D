@@ -6,7 +6,7 @@
 /*   By: rmiranda <rmiranda@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 13:27:17 by rmiranda          #+#    #+#             */
-/*   Updated: 2023/10/04 14:33:07 by rmiranda         ###   ########.fr       */
+/*   Updated: 2023/10/04 14:39:01 by rmiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,16 +27,21 @@ static int	str_intrgb(char *line);
 int	parse_getter(t_map_info *info_ptr, int map_fd)
 {
 	char	*line;
+	int		error_flag;
 
+	error_flag = 0;
 	while (assert_completeness(info_ptr[0]))
 	{
 		line = get_next_line(map_fd, SKIP_NL);
 		if (add_next_instruction(line, info_ptr))
-			return (printf("Multiple instructions: "));
+			error_flag = 1;
 	}
-	add_line_to_map(info_ptr, get_next_line(map_fd, SKIP_NL));
-	while (!add_line_to_map(info_ptr, get_next_line(map_fd, KEEP_NEWLINE)))
-		;
+	if (!error_flag)
+	{
+		add_line_to_map(info_ptr, get_next_line(map_fd, SKIP_NL));
+		while (!add_line_to_map(info_ptr, get_next_line(map_fd, KEEP_NEWLINE)))
+			;
+	}
 	while (get_next_line(map_fd, KEEP_NEWLINE))
 		;
 	return (0);
