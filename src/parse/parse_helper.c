@@ -6,7 +6,7 @@
 /*   By: rmiranda <rmiranda@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 13:27:17 by rmiranda          #+#    #+#             */
-/*   Updated: 2023/10/04 14:39:01 by rmiranda         ###   ########.fr       */
+/*   Updated: 2023/10/04 14:41:32 by rmiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	parse_getter(t_map_info *info_ptr, int map_fd)
 	}
 	while (get_next_line(map_fd, KEEP_NEWLINE))
 		;
-	return (0);
+	return (error_flag);
 }
 
 static int	assert_completeness(t_map_info info)
