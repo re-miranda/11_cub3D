@@ -6,7 +6,7 @@
 /*   By: rmiranda <rmiranda@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 13:27:17 by rmiranda          #+#    #+#             */
-/*   Updated: 2023/10/03 18:04:04 by rmiranda         ###   ########.fr       */
+/*   Updated: 2023/10/04 14:33:07 by rmiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,24 +16,46 @@
 #define C 1
 #define F 0
 
+static int	assert_completeness(t_map_info info);
 static char	*get_next_line(int fd, int skip_nl);
+static int	add_next_instruction(char *line, t_map_info *info_ptr);
+static int	add_path(char *line, char **dest);
+static int	add_color(char *line, int *color_check, int *color);
 static int	add_line_to_map(t_map_info *info_ptr, char *line);
-static int	str_intrgb(char *line, int flag_floor_or_ceiling);
-static char	*trim_nl(char *line);
+static int	str_intrgb(char *line);
 
 int	parse_getter(t_map_info *info_ptr, int map_fd)
 {
-	info_ptr->path_no = trim_nl(ft_strdup(get_next_line(map_fd, SKIP_NL)));
-	info_ptr->path_so = trim_nl(ft_strdup(get_next_line(map_fd, SKIP_NL)));
-	info_ptr->path_we = trim_nl(ft_strdup(get_next_line(map_fd, SKIP_NL)));
-	info_ptr->path_ea = trim_nl(ft_strdup(get_next_line(map_fd, SKIP_NL)));
-	info_ptr->color_f = str_intrgb(get_next_line(map_fd, SKIP_NL), F);
-	info_ptr->color_c = str_intrgb(get_next_line(map_fd, SKIP_NL), C);
+	char	*line;
+
+	while (assert_completeness(info_ptr[0]))
+	{
+		line = get_next_line(map_fd, SKIP_NL);
+		if (add_next_instruction(line, info_ptr))
+			return (printf("Multiple instructions: "));
+	}
 	add_line_to_map(info_ptr, get_next_line(map_fd, SKIP_NL));
 	while (!add_line_to_map(info_ptr, get_next_line(map_fd, KEEP_NEWLINE)))
 		;
 	while (get_next_line(map_fd, KEEP_NEWLINE))
 		;
+	return (0);
+}
+
+static int	assert_completeness(t_map_info info)
+{
+	if (!info.path_no)
+		return (1);
+	if (!info.path_so)
+		return (1);
+	if (!info.path_we)
+		return (1);
+	if (!info.path_ea)
+		return (1);
+	if (!info.color_f_check)
+		return (1);
+	if (!info.color_c_check)
+		return (1);
 	return (0);
 }
 
@@ -49,7 +71,61 @@ static char	*get_next_line(int fd, int skip_nl)
 		free(line);
 		line = ft_get_next_line(fd);
 	}
+	if (line[ft_strlen(line) - 1] == '\n')
+		line[ft_strlen(line) - 1] = 0;
 	return (line);
+}
+
+static int	add_next_instruction(char *line, t_map_info *info_ptr)
+{
+	if (ft_strncmp("NO ", line, 3))
+	{
+		if (add_path(ft_strdup(line + 3), &info_ptr->path_no))
+			return (1);
+	}
+	else if (ft_strncmp("SO ", line, 3))
+	{
+		if (add_path(ft_strdup(line + 3), &info_ptr->path_so))
+			return (1);
+	}
+	else if (ft_strncmp("WE ", line, 3))
+	{
+		if (add_path(ft_strdup(line + 3), &info_ptr->path_we))
+			return (1);
+	}
+	else if (ft_strncmp("EA ", line, 3))
+	{
+		if (add_path(ft_strdup(line + 3), &info_ptr->path_ea))
+			return (1);
+	}
+	else if (ft_strncmp("F ", line, 2))
+	{
+		if (add_color(line + 2, &info_ptr->color_f_check, &info_ptr->color_f))
+			return (1);
+	}
+	else if (ft_strncmp("C ", line, 2))
+	{
+		if (add_color(line + 2, &info_ptr->color_c_check, &info_ptr->color_c))
+			return (1);
+	}
+	return (0);
+}
+
+static int	add_path(char *line, char **dest)
+{
+	if (!line || dest[0])
+		return (1);
+	dest[0] = line;
+	return (0);
+}
+
+static int	add_color(char *line, int *color_check, int *color)
+{
+	if (color_check[0])
+		return (1);
+	color[0] = str_intrgb(line);
+	color_check[0] = 1;
+	return (0);
 }
 
 static int	add_line_to_map(t_map_info *info_ptr, char *line)
@@ -65,24 +141,18 @@ static int	add_line_to_map(t_map_info *info_ptr, char *line)
 	ft_memmove(info_ptr->map, swap, (new_size - 1) * sizeof(char *));
 	if (swap)
 		free(swap);
-	info_ptr->map[new_size - 1] = trim_nl(ft_strdup(line));
+	info_ptr->map[new_size - 1] = ft_strdup(line);
 	info_ptr->m_height = new_size;
 	return (0);
 }
 
-static int	str_intrgb(char *line, int flag__floor_or_ceiling)
+static int	str_intrgb(char *line)
 {
 	int	index;
 	int	color_value;
 
 	index = 16;
 	color_value = 0;
-	if ((flag__floor_or_ceiling == F
-			&& !ft_strncmp(line, "F ", 2))
-		&& (flag__floor_or_ceiling == C
-			&& !ft_strncmp(line, "C ", 2)))
-		return (0xff000000);
-	line += 2;
 	while (index)
 	{
 		color_value = ((ft_atoi(line) << index) | color_value);
@@ -93,14 +163,4 @@ static int	str_intrgb(char *line, int flag__floor_or_ceiling)
 	}
 	color_value = ((ft_atoi(line)) | color_value);
 	return (color_value);
-}
-
-static char	*trim_nl(char *line)
-{
-	int	size;
-
-	size = ft_strlen(line);
-	if (size > 0)
-		line[size - 1] = 0;
-	return (line);
 }

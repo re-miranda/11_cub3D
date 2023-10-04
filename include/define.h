@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   define.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gasouza <gasouza@student.42sp.org.br>      +#+  +:+       +#+        */
+/*   By: rmiranda <rmiranda@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 15:26:33 by rmiranda          #+#    #+#             */
-/*   Updated: 2023/09/22 21:36:58 by gasouza          ###   ########.fr       */
+/*   Updated: 2023/10/04 14:29:29 by rmiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,9 @@ typedef struct s_map_info {
 	char	*path_so;
 	char	*path_we;
 	char	*path_ea;
+	int		color_f_check;
 	int		color_f;
+	int		color_c_check;
 	int		color_c;
 	char	**map;
 	int		m_height;
