@@ -5,22 +5,25 @@ SRC_DIR = src
 OBJ = $(SRC:%.c=%.o)
 INCLUDE = $(wildcard $(INCLUDE_DIR)/*.h)
 INCLUDE_DIR = include libft
-LIBFT = $(LIBFT_DIR)/libft.a
 LIBFT_DIR = libft
+LIBFT += $(LIBFT_DIR)/libft/libft.a
+LIBFT += $(LIBFT_DIR)/libftplus.a
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror -g
 RM = rm -rf
+VALGRING = valgrind --leak-check=full --show-leak-kinds=all
+TEST_MAP = map/subjects_map.cub
 
 all: $(NAME)
 
 run: all
-	./$(NAME) map/subjects_map.cub
+	./$(NAME) $(TEST_MAP)
 
 valgrind: $(NAME)
-	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME) map/subjects_map.cub
+	$(VALGRING) ./$(NAME) $(TEST_MAP)
 
 $(NAME): $(LIBFT) $(OBJ)
-	$(CC) $(CFLAGS) -o $@ $(OBJ) -L$(LIBFT_DIR) -lft -lmlx -lXext -lX11 -lm
+	$(CC) $(CFLAGS) -o $@ $(OBJ) -L$(LIBFT_DIR) $(LIBFT:$(LIBFT_DIR)/lib%.a=-l%) -lmlx -lXext -lX11 -lm 
 
 $(LIBFT):
 	make -C $(LIBFT_DIR)

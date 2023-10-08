@@ -6,7 +6,7 @@
 /*   By: rmiranda <rmiranda@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 13:27:17 by rmiranda          #+#    #+#             */
-/*   Updated: 2023/10/04 14:41:32 by rmiranda         ###   ########.fr       */
+/*   Updated: 2023/10/05 04:11:19 by rmiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #define F 0
 
 static int	assert_completeness(t_map_info info);
-static char	*get_next_line(int fd, int skip_nl);
+static char	*get_nl(int fd, int skip_nl);
 static int	add_next_instruction(char *line, t_map_info *info_ptr);
 static int	add_path(char *line, char **dest);
 static int	add_color(char *line, int *color_check, int *color);
@@ -32,17 +32,17 @@ int	parse_getter(t_map_info *info_ptr, int map_fd)
 	error_flag = 0;
 	while (assert_completeness(info_ptr[0]))
 	{
-		line = get_next_line(map_fd, SKIP_NL);
+		line = get_nl(map_fd, SKIP_NL);
 		if (add_next_instruction(line, info_ptr))
 			error_flag = 1;
 	}
 	if (!error_flag)
 	{
-		add_line_to_map(info_ptr, get_next_line(map_fd, SKIP_NL));
-		while (!add_line_to_map(info_ptr, get_next_line(map_fd, KEEP_NEWLINE)))
+		add_line_to_map(info_ptr, get_nl(map_fd, SKIP_NL));
+		while (!add_line_to_map(info_ptr, get_nl(map_fd, KEEP_NEWLINE)))
 			;
 	}
-	while (get_next_line(map_fd, KEEP_NEWLINE))
+	while (get_nl(map_fd, KEEP_NEWLINE))
 		;
 	return (error_flag);
 }
@@ -64,7 +64,7 @@ static int	assert_completeness(t_map_info info)
 	return (0);
 }
 
-static char	*get_next_line(int fd, int skip_nl)
+static char	*get_nl(int fd, int skip_nl)
 {
 	static char	*line;
 

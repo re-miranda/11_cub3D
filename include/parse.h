@@ -6,14 +6,14 @@
 /*   By: rmiranda <rmiranda@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 16:03:07 by rmiranda          #+#    #+#             */
-/*   Updated: 2023/10/04 12:36:59 by rmiranda         ###   ########.fr       */
+/*   Updated: 2023/10/08 06:54:33 by rmiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PARSE_H
 # define PARSE_H
 # include "define.h"
-# include "libft_gnl_printf.h"
+# include "libftplus.h"
 # include <stdio.h>
 # include <fcntl.h>
 
