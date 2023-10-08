@@ -1,32 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_whole_file.c                                   :+:      :+:    :+:   */
+/*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rmiranda <rmiranda@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/16 06:12:50 by rmiranda          #+#    #+#             */
-/*   Updated: 2023/09/13 11:46:14 by rmiranda         ###   ########.fr       */
+/*   Created: 2022/08/27 08:17:07 by rmiranda          #+#    #+#             */
+/*   Updated: 2023/10/08 18:45:44 by rmiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#ifndef LIBFTPLUS_H
+# define LIBFTPLUS_H
 
-char	*ft_get_whole_file(int fd)
-{
-	char	*swap;
-	char	*line;
-	char	*whole_file;
+# include "./libft/libft.h"
+char	*ft_get_next_line(int fd);
+int		ft_printf(const char *format_string, ...);
 
-	line = ft_get_next_line(fd);
-	whole_file = ft_strdup("");
-	while (line)
-	{
-		swap = whole_file;
-		whole_file = ft_strjoin(whole_file, line);
-		free(line);
-		free(swap);
-		line = ft_get_next_line(fd);
-	}
-	return (whole_file);
-}
+#endif

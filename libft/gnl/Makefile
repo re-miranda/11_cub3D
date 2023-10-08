@@ -1,22 +1,18 @@
-# LIBS
 NAME = libftgnl.a
-LIBFT = ../libft.a
 
-# LIBS PATH
-NAME_PATH = ./
-LIBFT_PATH = ../
+# LIBS
+LIBFT = ../libftplus.a
 HEADER_PATH = ./
 
 # OTHERS
 CC = cc
 AR = ar -rcs
 RM = rm -rf
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -fPIE
 
 # FILES
-SRC = get_next_line.c \
-	get_next_line_utils.c \
-	get_whole_file.c
+SRC += ft_get_next_line.c
+SRC += ft_get_next_line_utils.c
 OBJ = $(SRC:%.c=%.o)
 
 all: $(NAME)
@@ -25,8 +21,7 @@ all: $(NAME)
 	$(CC) $(CFLAGS) -c -I$(HEADER_PATH) $< -o $(<:%.c=%.o)
 
 $(NAME): $(OBJ)
-	cp $(LIBFT) $(NAME_PATH)
-	mv ./libft.a $(NAME)
+	cp $(LIBFT) $(NAME)
 	$(AR) $(NAME) $(OBJ)
 
 clean:

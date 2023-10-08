@@ -1,18 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   ft_get_next_line.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rmiranda <rmiranda@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 21:37:03 by rmiranda          #+#    #+#             */
-/*   Updated: 2023/09/13 11:44:56 by rmiranda         ###   ########.fr       */
+/*   Updated: 2023/10/08 06:32:21 by rmiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "ft_get_next_line.h"
 
-t_list	*find_node(int fd, t_list *head)
+static t_list	*find_node(int fd, t_list *head);
+static char	*return_and_free_node(t_list *node);
+static char	*erase_first_line(t_list *node);
+static char	*get_line(t_list *node, int fd);
+
+char	*ft_get_next_line(int fd)
+{
+	static t_list	*head;
+	t_list			*node;
+	char			*line;
+
+	if (fd < 0 || BUFFER_SIZE < 1)
+		return (NULL);
+	if (head == NULL)
+		head = new_node(-42, head);
+	node = find_node(fd, head);
+	line = get_line(node, fd);
+	if (head->next == NULL)
+	{
+		free(head->buffer);
+		free(head);
+		head = NULL;
+	}
+	return (line);
+}
+
+static t_list	*find_node(int fd, t_list *head)
 {
 	t_list	*here;
 
@@ -26,7 +52,7 @@ t_list	*find_node(int fd, t_list *head)
 	return (here);
 }
 
-char	*return_and_free_node(t_list *node)
+static char	*return_and_free_node(t_list *node)
 {
 	char	*line;
 
@@ -45,7 +71,7 @@ char	*return_and_free_node(t_list *node)
 	return (line);
 }
 
-char	*erase_first_line(t_list *node)
+static char	*erase_first_line(t_list *node)
 {
 	char	*line;
 	char	*swap;
@@ -62,7 +88,7 @@ char	*erase_first_line(t_list *node)
 	return (line);
 }
 
-char	*get_line(t_list *node, int fd)
+static char	*get_line(t_list *node, int fd)
 {
 	char	*new_buffer;
 	char	*swap;
@@ -85,25 +111,4 @@ char	*get_line(t_list *node, int fd)
 		free(new_buffer);
 	}
 	return (erase_first_line(node));
-}
-
-char	*ft_get_next_line(int fd)
-{
-	static t_list	*head;
-	t_list			*node;
-	char			*line;
-
-	if (fd < 0 || BUFFER_SIZE < 1)
-		return (NULL);
-	if (head == NULL)
-		head = new_node(-42, head);
-	node = find_node(fd, head);
-	line = get_line(node, fd);
-	if (head->next == NULL)
-	{
-		free(head->buffer);
-		free(head);
-		head = NULL;
-	}
-	return (line);
 }

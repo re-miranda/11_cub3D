@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "ft_get_next_line.h"
 
 char	*ft_strdup_gnl(char *str)
 {

@@ -11,7 +11,7 @@ SRCS = ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c \
 
 OBJS = $(SRCS:%.c=%.o)
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -fPIE
 AR = ar -rcs
 RM = rm -rf
 NAME = libft.a

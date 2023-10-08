@@ -1,16 +1,14 @@
-# LIBS
 NAME = libftprintf.a
-LIBFT = ../libft.a
 
-# LIBS PATH
-LIBFT_PATH = ../
+# LIBS
+LIBFT = ../libftplus.a
 HEADER_PATH = ./
 
 # OTHERS
 CC = cc
 AR = ar -rcs
 RM = rm -rf
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -fPIE
 
 # FILES
 SRC = ft_printf.c \
@@ -30,8 +28,7 @@ all: $(NAME)
 	$(CC) $(CFLAGS) -c -I$(HEADER_PATH) $< -o $(<:%.c=%.o)
 
 $(NAME): $(OBJ) $(LIBFT)
-	cp $(LIBFT) ./
-	mv ./libft.a $(NAME)
+	cp $(LIBFT) $(NAME)
 	$(AR) $(NAME) $(OBJ)
 
 clean:
