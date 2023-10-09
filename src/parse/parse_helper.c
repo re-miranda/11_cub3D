@@ -6,7 +6,7 @@
 /*   By: rmiranda <rmiranda@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 13:27:17 by rmiranda          #+#    #+#             */
-/*   Updated: 2023/10/05 04:11:19 by rmiranda         ###   ########.fr       */
+/*   Updated: 2023/10/09 18:22:16 by rmiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	parse_getter(t_map_info *info_ptr, int map_fd)
 	int		error_flag;
 
 	error_flag = 0;
-	while (assert_completeness(info_ptr[0]))
+	while (!error_flag && assert_completeness(info_ptr[0]))
 	{
 		line = get_nl(map_fd, SKIP_NL);
 		if (add_next_instruction(line, info_ptr))
@@ -71,44 +71,44 @@ static char	*get_nl(int fd, int skip_nl)
 	if (line)
 		free(line);
 	line = ft_get_next_line(fd);
-	while (skip_nl && !ft_strncmp(line, "\n", 3))
+	while (line && skip_nl && !ft_strncmp(line, "\n", 3))
 	{
 		free(line);
 		line = ft_get_next_line(fd);
 	}
-	if (line[ft_strlen(line) - 1] == '\n')
+	if (line && line[ft_strlen(line) - 1] == '\n')
 		line[ft_strlen(line) - 1] = 0;
 	return (line);
 }
 
 static int	add_next_instruction(char *line, t_map_info *info_ptr)
 {
-	if (ft_strncmp("NO ", line, 3))
+	if (!ft_strncmp("NO ", line, 3))
 	{
 		if (add_path(ft_strdup(line + 3), &info_ptr->path_no))
 			return (1);
 	}
-	else if (ft_strncmp("SO ", line, 3))
+	else if (!ft_strncmp("SO ", line, 3))
 	{
 		if (add_path(ft_strdup(line + 3), &info_ptr->path_so))
 			return (1);
 	}
-	else if (ft_strncmp("WE ", line, 3))
+	else if (!ft_strncmp("WE ", line, 3))
 	{
 		if (add_path(ft_strdup(line + 3), &info_ptr->path_we))
 			return (1);
 	}
-	else if (ft_strncmp("EA ", line, 3))
+	else if (!ft_strncmp("EA ", line, 3))
 	{
 		if (add_path(ft_strdup(line + 3), &info_ptr->path_ea))
 			return (1);
 	}
-	else if (ft_strncmp("F ", line, 2))
+	else if (!ft_strncmp("F ", line, 2))
 	{
 		if (add_color(line + 2, &info_ptr->color_f_check, &info_ptr->color_f))
 			return (1);
 	}
-	else if (ft_strncmp("C ", line, 2))
+	else if (!ft_strncmp("C ", line, 2))
 	{
 		if (add_color(line + 2, &info_ptr->color_c_check, &info_ptr->color_c))
 			return (1);
