@@ -6,7 +6,7 @@
 /*   By: rmiranda <rmiranda@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 09:01:33 by gasouza           #+#    #+#             */
-/*   Updated: 2023/10/03 16:20:07 by rmiranda         ###   ########.fr       */
+/*   Updated: 2023/10/10 10:57:41 by rmiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,34 +16,8 @@
 
 // static void temp_config_create(t_game *game);
 static void temp_config_destroy(t_game *game);
+static void	print_map(t_map_info info);
 
-static void	print_map(t_map_info info)
-{
-	int	index;
-	int	index2;
-	int	mask;
-
-	printf("%s\n", info.path_no);
-	printf("%s\n", info.path_so);
-	printf("%s\n", info.path_we);
-	printf("%s\n", info.path_ea);
-	mask = 0x000000ff;
-	printf("F %i, %i, %i, %i\n", info.color_f>>24, mask & info.color_f>>16, mask & info.color_f>>8, mask & info.color_f);
-	printf("C %i, %i, %i, %i\n", info.color_c>>24, mask & info.color_c>>16, mask & info.color_c>>8, mask & info.color_c);
-	if (info.map)
-	{
-		index = 0;
-		while (index < info.m_height)
-		{
-			index2 = 0;
-			while (index2 < info.m_width)
-				printf("%i", (int)info.map[index][index2++]);
-			printf("\n");
-			index++;
-		}
-	}
-	printf("\n");
-}
 
 int	main(int argc, char *argv[])
 {
@@ -163,4 +137,27 @@ static void temp_config_destroy(t_game *game)
 	free(game->info.map);
 
 		printf("Temporary Configuration: destroyed!\n");
+}
+
+static void	print_map(t_map_info info)
+{
+	int	mask;
+
+	printf("%s\n", info.path_no);
+	printf("%s\n", info.path_so);
+	printf("%s\n", info.path_we);
+	printf("%s\n", info.path_ea);
+	mask = 0x000000ff;
+	printf("F %i, %i, %i, %i\n", info.color_f>>24, mask & info.color_f>>16, mask & info.color_f>>8, mask & info.color_f);
+	printf("C %i, %i, %i, %i\n", info.color_c>>24, mask & info.color_c>>16, mask & info.color_c>>8, mask & info.color_c);
+	if (info.map)
+	{
+		for (int index = 0; index < info.m_height; index++)
+		{
+			for (int index2 = 0; index2 < info.m_width; index2++)
+				printf("%i", (int)info.map[index][index2++]);
+			printf("\n");
+		}
+	}
+	printf("\n");
 }
