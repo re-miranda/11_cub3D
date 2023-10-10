@@ -6,7 +6,7 @@
 /*   By: rmiranda <rmiranda@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 12:25:46 by rmiranda          #+#    #+#             */
-/*   Updated: 2023/10/03 18:14:53 by rmiranda         ###   ########.fr       */
+/*   Updated: 2023/10/09 21:32:34 by rmiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
 #define ALLOWED_CHARACTERS " 01NWSE"
 
 static int	lexical_analysis(char **map, int map_height);
-static int	get_orient(char **map, int map_height, char *orient_ptr, t_vect *pos);
-static char	**normalize_map(t_map_info *info_ptr);
+static int	get_orient(t_map_info *info_ptr);
 // static int	find_unclosed_wall(char **map);
 
 int	map_validation(t_map_info *info_ptr)
@@ -25,7 +24,7 @@ int	map_validation(t_map_info *info_ptr)
 	index = 0;
 	if (lexical_analysis(info_ptr->map, info_ptr->m_height))
 		return (printf("Invalid character or empty line in map: "));
-	if (get_orient(info_ptr->map, info_ptr->m_height, &info_ptr->orient, &info_ptr->pos) != 1)
+	if (get_orient(info_ptr) != 1)
 		return (printf("More than one orientation instruction in map: "));
 	while (index < info_ptr->m_height)
 	{
@@ -44,12 +43,17 @@ static void	space_injest_func(unsigned int nb, char *c)
 	(void)nb;
 	if (c[0] == ' ')
 		c[0] = EMPTY;
+	if (c[0] == '1')
+		c[0] = WALL;
+	if (c[0] == '0')
+		c[0] = FLOOR;
 }
 
-static char	**normalize_map(t_map_info *info_ptr)
+char	**normalize_map(t_map_info *info_ptr)
 {
 	int		index;
 	char	**temp;
+	int		size;
 
 	temp = ft_calloc(info_ptr->m_height + 1, sizeof(char **));
 	index = 0;
@@ -57,8 +61,9 @@ static char	**normalize_map(t_map_info *info_ptr)
 	{
 		temp[index] = ft_calloc(info_ptr->m_width + 1, sizeof(char));
 		ft_memset(temp[index], EMPTY, info_ptr->m_width);
+		size = ft_strlen(info_ptr->map[index]);
 		ft_striteri(info_ptr->map[index], &space_injest_func);
-		ft_memmove(info_ptr->map[index], temp[index], ft_strlen(info_ptr->map[index]));
+		ft_memmove(temp[index], info_ptr->map[index], size);
 		free(info_ptr->map[index]);
 		index++;
 	}
@@ -106,7 +111,7 @@ static int	lexical_analysis(char **map, int map_height)
 	return (0);
 }
 
-static int	get_orient(char **map, int map_height, char *orient_ptr, t_vect *pos)
+static int	get_orient(t_map_info *info_ptr)
 {
 	char	*map_line;
 	int		xx;
@@ -115,18 +120,18 @@ static int	get_orient(char **map, int map_height, char *orient_ptr, t_vect *pos)
 
 	xx = 0;
 	return_value = 0;
-	while (xx < map_height)
+	while (xx < info_ptr->m_height)
 	{
-		map_line = map[xx++];
+		map_line = info_ptr->map[xx++];
 		yy = 0;
 		while (map_line[yy])
 		{
 			if (ft_isalpha(map_line[yy]))
 			{
-				pos->y = yy;
-				pos->x = xx;
-
-				*orient_ptr = map_line[yy];
+				info_ptr->pos.y = yy;
+				info_ptr->pos.x = xx;
+				info_ptr->orient = map_line[yy];
+ 				map_line[yy] = FLOOR;
 				return_value++;
 			}
 			yy++;
