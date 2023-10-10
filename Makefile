@@ -17,7 +17,10 @@ CRITERION_INCLUDE = -I/opt/homebrew/Cellar/criterion/2.4.1_3/include
 CRITERION_LIB = -L/opt/homebrew/Cellar/criterion/2.4.1_3/lib/ -lcriterion
 TEST_SRC = test/normalize_map.c
 
-all: $(NAME)
+all: $(NAME) test
+	@echo "\n\nCOMPILED AND TESTED SUCCESSFULLY"
+	@echo "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n"
+	@echo "well done!"
 
 run: all
 	./$(NAME) $(TEST_MAP)
@@ -27,7 +30,7 @@ valgrind: $(NAME)
 
 test: $(OBJ)
 	$(CC) $(CRITERION_INCLUDE) -Iinclude -I$(LIBFT_DIR) $(TEST_SRC) /Users/rmiranda/42_rmiranda/11_cub3D/src/parse/parse_validation.o -L$(LIBFT_DIR) $(LIBFT:$(LIBFT_DIR)/lib%.a=-l%) $(CRITERION_LIB)
-	-./a.out
+	./a.out
 	$(RM) a.out
 
 $(NAME): $(LIBFT) $(OBJ)
