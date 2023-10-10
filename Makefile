@@ -13,6 +13,9 @@ CFLAGS = -Wall -Wextra -Werror -g
 RM = rm -rf
 VALGRING = valgrind --leak-check=full --show-leak-kinds=all
 TEST_MAP = map/subjects_map.cub
+CRITERION_INCLUDE = -I/opt/homebrew/Cellar/criterion/2.4.1_3/include
+CRITERION_LIB = -L/opt/homebrew/Cellar/criterion/2.4.1_3/lib/ -lcriterion
+TEST_SRC = test/normalize_map.c
 
 all: $(NAME)
 
@@ -22,8 +25,13 @@ run: all
 valgrind: $(NAME)
 	$(VALGRING) ./$(NAME) $(TEST_MAP)
 
+test: $(OBJ)
+	$(CC) $(CRITERION_INCLUDE) -Iinclude -I$(LIBFT_DIR) $(TEST_SRC) /Users/rmiranda/42_rmiranda/11_cub3D/src/parse/parse_validation.o -L$(LIBFT_DIR) $(LIBFT:$(LIBFT_DIR)/lib%.a=-l%) $(CRITERION_LIB)
+	-./a.out
+	$(RM) a.out
+
 $(NAME): $(LIBFT) $(OBJ)
-	$(CC) $(CFLAGS) -o $@ $(OBJ) -L$(LIBFT_DIR) $(LIBFT:$(LIBFT_DIR)/lib%.a=-l%) -lmlx -lXext -lX11 -lm 
+	$(CC) $(CFLAGS) -o $@ $(OBJ) -L$(LIBFT_DIR) $(LIBFT:$(LIBFT_DIR)/lib%.a=-l%) -L/opt/homebrew/Cellar/libxext/1.3.5/lib/ -lmlx -lXext -L/opt/homebrew/Cellar/libx11/1.8.6/lib/ -lX11 -lm
 
 $(LIBFT):
 	make -C $(LIBFT_DIR)
@@ -41,4 +49,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re run valgrind
+.PHONY: all clean fclean re run valgrind test
