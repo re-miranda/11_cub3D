@@ -12,7 +12,7 @@ CC = gcc
 CFLAGS = -Wall -Wextra -Werror -g
 RM = rm -rf
 VALGRING = valgrind --leak-check=full --show-leak-kinds=all
-TEST_MAP = map/gabriels_map.cub
+TEST_MAP = map/surprising_map.cub
 CRITERION_INCLUDE = -I/opt/homebrew/Cellar/criterion/2.4.1_3/include
 CRITERION_LIB = -L/opt/homebrew/Cellar/criterion/2.4.1_3/lib/ -lcriterion
 TEST_SRC = test/normalize_map.c
