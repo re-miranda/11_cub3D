@@ -6,7 +6,7 @@
 /*   By: rmiranda <rmiranda@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 09:01:33 by gasouza           #+#    #+#             */
-/*   Updated: 2023/10/10 10:57:41 by rmiranda         ###   ########.fr       */
+/*   Updated: 2023/10/11 10:36:36 by rmiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,7 +155,7 @@ static void	print_map(t_map_info info)
 		for (int index = 0; index < info.m_height; index++)
 		{
 			for (int index2 = 0; index2 < info.m_width; index2++)
-				printf("%i", (int)info.map[index][index2++]);
+				printf("%i", (int)info.map[index][index2]);
 			printf("\n");
 		}
 	}
