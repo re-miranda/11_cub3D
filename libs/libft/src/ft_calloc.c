@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gasouza <gasouza@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/06 14:59:06 by rmiranda          #+#    #+#             */
-/*   Updated: 2023/10/12 13:40:59 by gasouza          ###   ########.fr       */
+/*   Created: 2022/04/14 19:24:06 by gasouza           #+#    #+#             */
+/*   Updated: 2022/04/30 23:22:30 by gasouza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#include "libft.h"
+#include <stdlib.h>
 
-# include <stdio.h>
-# include <math.h>
-# include "mlx.h"
-# include "libft.h"
-# include "gnl.h"
-# include "define.h"
-# include "helpers.h"
-# include "engine.h"
-# include "parse.h"
+void	*ft_calloc(size_t nmemb, size_t size)
+{	
+	void	*ptr;
+	size_t	ptr_size;
 
-int	parse(t_map_info *info_ptr, char *map_path);
-
-#endif
+	ptr_size = nmemb * size;
+	if (ptr_size != 0 && ptr_size / nmemb != size)
+		return (NULL);
+	ptr = malloc(ptr_size);
+	if (ptr != NULL)
+		ft_bzero(ptr, ptr_size);
+	return (ptr);
+}

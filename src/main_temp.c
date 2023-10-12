@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main_temp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmiranda <rmiranda@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gasouza <gasouza@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 09:01:33 by gasouza           #+#    #+#             */
-/*   Updated: 2023/10/11 10:36:36 by rmiranda         ###   ########.fr       */
+/*   Updated: 2023/10/12 13:39:54 by gasouza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-#include "parse.h"
 #include <string.h>
 
 // static void temp_config_create(t_game *game);

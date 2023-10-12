@@ -3,17 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   parse.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmiranda <rmiranda@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gasouza <gasouza@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 16:03:07 by rmiranda          #+#    #+#             */
-/*   Updated: 2023/10/11 11:49:38 by rmiranda         ###   ########.fr       */
+/*   Updated: 2023/10/12 13:38:31 by gasouza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PARSE_H
 # define PARSE_H
-# include "define.h"
-# include "libftplus.h"
+# include "cub3d.h"
 # include <stdio.h>
 # include <fcntl.h>
 

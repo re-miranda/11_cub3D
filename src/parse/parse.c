@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmiranda <rmiranda@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gasouza <gasouza@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 13:23:34 by rmiranda          #+#    #+#             */
-/*   Updated: 2023/10/11 11:49:49 by rmiranda         ###   ########.fr       */
+/*   Updated: 2023/10/12 13:41:37 by gasouza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,11 +88,11 @@ static char	*get_nl(int fd, int skip_nl)
 
 	if (line)
 		free(line);
-	line = ft_get_next_line(fd);
+	line = get_next_line(fd);
 	while (line && skip_nl && !ft_strncmp(line, "\n", 3))
 	{
 		free(line);
-		line = ft_get_next_line(fd);
+		line = get_next_line(fd);
 	}
 	if (line && line[ft_strlen(line) - 1] == '\n')
 		line[ft_strlen(line) - 1] = 0;

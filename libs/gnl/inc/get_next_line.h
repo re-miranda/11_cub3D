@@ -1,28 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gasouza <gasouza@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/06 14:59:06 by rmiranda          #+#    #+#             */
-/*   Updated: 2023/10/12 13:40:59 by gasouza          ###   ########.fr       */
+/*   Created: 2022/05/04 15:23:05 by gasouza           #+#    #+#             */
+/*   Updated: 2023/03/25 10:14:07 by gasouza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
-# include <stdio.h>
-# include <math.h>
-# include "mlx.h"
-# include "libft.h"
-# include "gnl.h"
-# include "define.h"
-# include "helpers.h"
-# include "engine.h"
-# include "parse.h"
+# include <unistd.h>
+# include <stdlib.h>
 
-int	parse(t_map_info *info_ptr, char *map_path);
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 4096
+# endif
+
+char		*get_next_line(int fd);
+const char	*find_end_line_character(const char *str);
+size_t		get_strlen(const char *str);
+size_t		copy_str(char *dst, const char *src, size_t size);
+void		concatenate_strs(char **dst, const char *src, size_t size);
 
 #endif
