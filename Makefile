@@ -6,7 +6,7 @@
 #    By: gasouza <gasouza@student.42sp.org.br>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/12 13:01:11 by gasouza           #+#    #+#              #
-#    Updated: 2023/10/12 15:50:49 by gasouza          ###   ########.fr        #
+#    Updated: 2023/10/12 16:36:28 by gasouza          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,8 +33,11 @@ LIBFT_ARCH 	= $(LIBFT_DIR)/libft.a
 GNL_DIR 	= $(LIBS_DIR)/gnl
 GNL_ARCH 	= $(GNL_DIR)/libgnl.a
 
-LFLAGS 		= -L$(LIBFT_DIR) -lft -L$(GNL_DIR) -lgnl -lmlx -lXext -lX11 -lm
-HFLAGS		= -I$(INCLUDE_DIR) -I$(LIBFT_DIR) -I$(GNL_DIR)
+MLX_DIR 	= $(LIBS_DIR)/minilibx
+MLX_ARCH 	= $(MLX_DIR)/libmlx.a
+
+LFLAGS 		= -L$(LIBFT_DIR) -lft -L$(GNL_DIR) -lgnl -L$(MLX_DIR) -lmlx -lXext -lX11 -lm
+HFLAGS		= -I$(INCLUDE_DIR) -I$(LIBFT_DIR) -I$(GNL_DIR) -I$(MLX_DIR) 
 CFLAGS		= -Wall -Wextra -Werror -g
 
 CC			= gcc
@@ -51,17 +54,21 @@ TESTS_OBJS	= $(TESTS_SRC:%.c=%.o)
 
 all: $(NAME)
 
-$(NAME): $(OBJS) $(MAIN_OBJ) | $(LIBFT_ARCH) $(GNL_ARCH)
-	@$(CC) $(CFLAGS) $(OBJS) $(MAIN_OBJ) -o $@ $(LFLAGS) && echo builded project
+$(NAME): $(OBJS) $(MAIN_OBJ) | $(LIBFT_ARCH) $(GNL_ARCH) $(MLX_ARCH)
+	@echo builded: objects
+	@$(CC) $(CFLAGS) $(OBJS) $(MAIN_OBJ) -o $@ $(LFLAGS) && echo builded: project
 	
 %.o: %.c $(INCLUDE)
 	@$(CC) $(CFLAGS) $(HFLAGS) -c $< -o $@ 
 
 $(LIBFT_ARCH):
-	@make -C $(LIBFT_DIR) --quiet && echo builded libft
+	@make -C $(LIBFT_DIR) --quiet && echo builded: libft
 
 $(GNL_ARCH):
-	@make -C $(GNL_DIR) --quiet && echo builded gnl
+	@make -C $(GNL_DIR) --quiet && echo builded: gnl
+
+$(MLX_ARCH):
+	@make -C $(MLX_DIR) --quiet && echo builded: mlx
 
 run: all
 	@./$(NAME) $(RUN_MAP)
@@ -79,18 +86,19 @@ test: $(OBJS) $(TESTS_OBJS) | $(LIBFT_ARCH) $(GNL_ARCH)
 	@$(RM) $(TESTS_NAME)
 
 clean:
-	@make -C $(LIBFT_DIR) clean --quiet 
-	@echo libft cleaned
-	@make -C $(GNL_DIR) clean --quiet && echo gnl cleaned
-	@$(RM) $(OBJS) $(MAIN_OBJ) && echo objects cleaned
+	@make -C $(LIBFT_DIR) clean --quiet && echo cleaned: libft 
+	@make -C $(GNL_DIR) clean --quiet && echo cleaned: gnl
+	@make -C $(MLX_DIR) clean --quiet && echo cleaned: mlx
+	@$(RM) $(OBJS) $(MAIN_OBJ) && echo cleaned: objects
 
 tclean: clean
-	@$(RM) $(TESTS_OBJS) && echo test objects cleaned
+	@$(RM) $(TESTS_OBJS) && echo test cleaned: objects
 	
 fclean: clean
 	@$(RM) $(NAME)
 	@make -C $(LIBFT_DIR) fclean --quiet 
 	@make -C $(GNL_DIR) fclean --quiet 
+	@make -C $(MLX_DIR) fclean --quiet 
 
 re: fclean all
 
