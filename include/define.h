@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   define.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmiranda <rmiranda@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gasouza <gasouza@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 15:26:33 by rmiranda          #+#    #+#             */
-/*   Updated: 2023/10/04 14:29:29 by rmiranda         ###   ########.fr       */
+/*   Updated: 2023/10/15 19:04:50 by gasouza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,19 @@
 # define MOUSE_SCROLL_UP 4
 // Mouse scroll down button number
 # define MOUSE_SCROLL_DOWN 5
+
+
+// Key Maps definition
+
+# define KEY_ESC 0xff1b
+# define KEY_A 0x0061
+# define KEY_W 0x0077
+# define KEY_S 0x0073
+# define KEY_D 0x0064
+# define KEY_Q 0x0071
+# define KEY_M 0x006d
+# define KEY_ARROW_LEFT 0xff51 
+# define KEY_ARROW_RIGHT 0xff53
 
 // Window definition
 //
