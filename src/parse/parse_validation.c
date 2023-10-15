@@ -6,7 +6,7 @@
 /*   By: rmiranda <rmiranda@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 12:25:46 by rmiranda          #+#    #+#             */
-/*   Updated: 2023/10/11 11:42:30 by rmiranda         ###   ########.fr       */
+/*   Updated: 2023/10/14 01:26:08 by rmiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 static int	lexical_analysis(char **map, int map_height);
 static int	get_orient(t_map_info *info_ptr);
-// static int	find_unclosed_wall(char **map);
+static int	assert_is_surrounded_by_wall(t_map_info info, char **map);
 
 int	map_validation(t_map_info *info_ptr)
 {
@@ -33,8 +33,8 @@ int	map_validation(t_map_info *info_ptr)
 		index++;
 	}
 	info_ptr->map = normalize_map(info_ptr);
-	// if (find_unclosed_wall(info_ptr->map))
-	// 	return (printf("Unclosed room in map: "));
+	if (assert_is_surrounded_by_wall(info_ptr[0], info_ptr->map))
+		return (printf("Map must be surrounded by walls: "));
 	return (0);
 }
 
@@ -71,24 +71,25 @@ char	**normalize_map(t_map_info *info_ptr)
 	return (temp);
 }
 
-// static int	find_unclosed_wall(char **map)
-// {
-// 	int	xx;
-// 	int yy;
+static int	assert_is_surrounded_by_wall(t_map_info info, char **map)
+{
+	int	xx;
+	int yy;
 
-// 	xx = 0;
-// 	yy = 0;
-// 	while (map[xx][yy])
-// 	{
-// 		if (!map[xx][yy + 2])
-// 		{
-// 			if (!map[xx + 2])
-// 				break ;
-// 			yy = 0;
-// 			continue ;
-// 		}
-// 	}
-// }
+	xx = 1;
+	yy = 0;
+	while (map[0][yy])
+		if (map[0][yy] != 1)
+			return (printf("On first line char %i: ", yy++));
+	while (xx < info.m_height - 1)
+		if (map[xx][0] != 1 || map[xx][ft_strlen(map[xx]) - 1] != 1)
+			return (printf("On map line %i: ", xx++));
+	yy = 0;
+	while (map[xx][yy])
+		if (map[xx][yy++] != 1)
+			return (printf("On last line char %i: ", yy++));
+	return (0);
+}
 
 static int	lexical_analysis(char **map, int map_height)
 {
