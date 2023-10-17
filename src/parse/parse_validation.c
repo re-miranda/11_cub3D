@@ -6,7 +6,7 @@
 /*   By: rmiranda <rmiranda@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 12:25:46 by rmiranda          #+#    #+#             */
-/*   Updated: 2023/10/16 19:48:33 by rmiranda         ###   ########.fr       */
+/*   Updated: 2023/10/17 16:37:33 by rmiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	map_validation(t_map_info *info_ptr)
 	if (lexical_analysis(info_ptr->map, info_ptr->m_height))
 		return (printf("Invalid character or empty line in map: "));
 	if (get_orient(info_ptr) != 1)
-		return (printf("More than one orientation instruction in map: "));
+		return (printf("More than one, or no orientation instruction in map: "));
 	while (index < info_ptr->m_height)
 	{
 		if ((size_t)info_ptr->m_width < ft_strlen(info_ptr->map[index]))
@@ -110,7 +110,7 @@ int	bounderies_check_vertical_axis(t_map_info info, int xx, int yy)
 	while  (index--)
 	{
 		if (info.map[index][yy] == EMPTY)
-			return (1);
+			return (-1);
 		if (info.map[index][yy] == WALL)
 			break ;
 	}
@@ -120,7 +120,7 @@ int	bounderies_check_vertical_axis(t_map_info info, int xx, int yy)
 	while  (++index < info.m_height)
 	{
 		if (info.map[index][yy] == EMPTY)
-			return (1);
+			return (-1);
 		if (info.map[index][yy] == WALL)
 			break ;
 	}
@@ -137,7 +137,7 @@ int	bounderies_check_horizontal_axis(t_map_info info, int xx, int yy)
 	while  (index--)
 	{
 		if (info.map[xx][index] == EMPTY)
-			return (1);
+			return (-1);
 		if (info.map[xx][index] == WALL)
 			break ;
 	}
@@ -147,7 +147,7 @@ int	bounderies_check_horizontal_axis(t_map_info info, int xx, int yy)
 	while  (++index < info.m_width)
 	{
 		if (info.map[xx][index] == EMPTY)
-			return (1);
+			return (-1);
 		if (info.map[xx][index] == WALL)
 			break ;
 	}
