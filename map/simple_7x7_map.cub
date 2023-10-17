@@ -1,0 +1,14 @@
+NO ./img/red.xpm
+SO ./img/yellow.xpm
+WE ./img/pink.xpm
+EA ./img/blue.xpm
+F 220,100,0
+C 225,30,0
+
+1111111
+1000001
+10N0001
+1000001
+1000001
+1000001
+1111111
