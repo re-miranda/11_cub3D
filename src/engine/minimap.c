@@ -6,7 +6,7 @@
 /*   By: gasouza <gasouza@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 15:58:11 by gasouza           #+#    #+#             */
-/*   Updated: 2023/09/26 16:28:00 by gasouza          ###   ########.fr       */
+/*   Updated: 2023/10/18 19:35:07 by gasouza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,20 +22,20 @@ void	display_minimap(t_game *game)
 	t_ivect	end;
 
 	start.x = 0;
-	end.x = MMAP_W / game->mmap_zoom;
-	if (game->pos.y + 1 >= end.x)
+	end.x = MMAP_H / game->mmap_zoom;
+	if (game->pos.x + 1 >= end.x)
 	{
-		end.x = game->pos.y + 2;
-		start.x = end.x - MMAP_W / game->mmap_zoom;
+		end.x = game->pos.x + 2;
+		start.x = end.x - MMAP_H / game->mmap_zoom;
 	}
 	if (end.x > map_height(game))
 		end.x = map_height(game);
 	start.y = 0;
-	end.y = MMAP_H / game->mmap_zoom;
-	if (game->pos.x + 1 >= end.y)
+	end.y = MMAP_W / game->mmap_zoom;
+	if (game->pos.y + 1 >= end.y)
 	{
-		end.y = game->pos.x + 2;
-		start.y = end.y - map_height(game) / game->mmap_zoom;
+		end.y = game->pos.y + 2;
+		start.y = end.y - MMAP_W / game->mmap_zoom;
 	}
 	if (start.y < 0)
 		start.y = 0;
@@ -44,7 +44,7 @@ void	display_minimap(t_game *game)
 	render_minimap(game, &start, &end);
 }
 
-static void render_minimap(t_game *g, t_ivect *start, t_ivect *end)
+static void	render_minimap(t_game *g, t_ivect *start, t_ivect *end)
 {
 	t_ivect	coord;
 	t_ivect	loop;
@@ -57,15 +57,15 @@ static void render_minimap(t_game *g, t_ivect *start, t_ivect *end)
 		while (++loop.y < MMAP_W)
 		{
 			pixel = minimap_pixel(&g->screen, loop.x, loop.y);
-			coord.x = start->x + (loop.y / g->mmap_zoom);
-			coord.y = start->y + (loop.x / g->mmap_zoom);
+			coord.x = start->x + (loop.x / g->mmap_zoom);
+			coord.y = start->y + (loop.y / g->mmap_zoom);
 			if (is_empty_coord(g, &coord, start, end))
 				continue ;
-			else if (coord.y == (int) g->pos.x && coord.x == (int) g->pos.y)
+			else if (coord.y == (int) g->pos.y && coord.x == (int) g->pos.x)
 				*(int *)pixel = MMAP_PCOLOR;
-			else if (map_at(g, coord.y, coord.x) == WALL)
+			else if (map_at(g, coord.x, coord.y) == WALL)
 				*(int *)pixel = MMAP_WCOLOR;
-			else if (map_at(g, coord.y, coord.x) == FLOOR)
+			else if (map_at(g, coord.x, coord.y) == FLOOR)
 				*(int *)pixel = MMAP_FCOLOR;
 		}
 	}
@@ -81,7 +81,7 @@ static int	is_empty_coord(t_game *game, t_ivect *c, t_ivect *s, t_ivect *e)
 	(void)s;
 	if (c->x >= e->x || c->y >= e->y)
 		return (1);
-	if (map_at(game, c->y, c->x) == EMPTY)
+	if (map_at(game, c->x, c->y) == EMPTY)
 		return (1);
 	return (0);
 }

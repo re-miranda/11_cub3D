@@ -6,7 +6,7 @@
 /*   By: gasouza <gasouza@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 15:26:33 by rmiranda          #+#    #+#             */
-/*   Updated: 2023/10/17 21:12:28 by gasouza          ###   ########.fr       */
+/*   Updated: 2023/10/18 19:57:17 by gasouza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,9 +65,9 @@
 // Minimap definition
 //
 // Mainimap width
-# define MMAP_W 100
+# define MMAP_W 150
 // Minimap height
-# define MMAP_H 100
+# define MMAP_H 150
 // Player color on minimap
 # define MMAP_PCOLOR 0x00FF9A03
 // Wall color on minimap
@@ -75,7 +75,7 @@
 // Floor color on minimap
 # define MMAP_FCOLOR 0x00
 // Minimap min zoom (and initial zoom)
-# define MMAP_MIN_ZOOM 6
+# define MMAP_MIN_ZOOM 2
 // Minimap max zoom
 # define MMAP_MAX_ZOOM 20
 

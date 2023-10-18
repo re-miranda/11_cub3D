@@ -6,7 +6,7 @@
 /*   By: gasouza <gasouza@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 21:51:27 by gasouza           #+#    #+#             */
-/*   Updated: 2023/10/17 21:10:33 by gasouza          ###   ########.fr       */
+/*   Updated: 2023/10/18 19:54:53 by gasouza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,11 @@ int		game_setup(t_game *game);
 void	game_destroy(t_game *game);
 // Perform keys listener
 int		key_listener(int key, t_game *game);
+// Perform mouse listener
+int		mouse_listener(int button, int x, int y, t_game *game);
 // Render the game screen with your current status
 void	render_the_screen(t_game *game);
+// Display minimap on screen
 void	display_minimap(t_game *game);
 
 // Raycasting

@@ -6,12 +6,12 @@
 #    By: gasouza <gasouza@student.42sp.org.br>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/12 13:01:11 by gasouza           #+#    #+#              #
-#    Updated: 2023/10/12 16:36:28 by gasouza          ###   ########.fr        #
+#    Updated: 2023/10/18 19:47:42 by gasouza          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME 		= cub3d
-RUN_MAP 	= map/gabriels_map.cub
+RUN_MAP 	= map/big_maze.cub
 
 SRC_DIR 	= src
 MAIN_SRC	= $(SRC_DIR)/main_temp.c

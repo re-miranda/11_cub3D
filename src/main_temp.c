@@ -6,7 +6,7 @@
 /*   By: gasouza <gasouza@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 09:01:33 by gasouza           #+#    #+#             */
-/*   Updated: 2023/10/12 13:39:54 by gasouza          ###   ########.fr       */
+/*   Updated: 2023/10/18 20:05:45 by gasouza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ int	main(int argc, char *argv[])
 	// ---
 	render_the_screen(&game);
 	mlx_hook(game.window, 2, 1L<<0, key_listener, &game); //keypess
+	mlx_hook(game.window, 4, 1L<<2, mouse_listener, &game); //mouse listener
 	mlx_put_image_to_window(game.mlx, game.window, game.screen.mlx, 0, 0);
 	mlx_loop(game.mlx);
 	// ---
