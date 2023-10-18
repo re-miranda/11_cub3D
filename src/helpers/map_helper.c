@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_helpers.c                                      :+:      :+:    :+:   */
+/*   map_helper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gasouza <gasouza@student.42sp.org.br>      +#+  +:+       +#+        */
+/*   By: rmiranda <rmiranda@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 09:18:55 by gasouza           #+#    #+#             */
-/*   Updated: 2023/09/19 10:03:38 by gasouza          ###   ########.fr       */
+/*   Updated: 2023/10/17 21:39:47 by rmiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 */
 char	map_at(t_game *game, int x, int y)
 {
-	return (game->info.map[y][x]);
+	return (game->info.map[x][y]);
 }
 
 int	map_width(t_game *game)
