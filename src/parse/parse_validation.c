@@ -6,7 +6,7 @@
 /*   By: rmiranda <rmiranda@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 12:25:46 by rmiranda          #+#    #+#             */
-/*   Updated: 2023/10/17 16:37:33 by rmiranda         ###   ########.fr       */
+/*   Updated: 2023/10/17 21:56:14 by rmiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -188,20 +188,21 @@ static int	get_orient(t_map_info *info_ptr)
 	return_value = 0;
 	while (xx < info_ptr->m_height)
 	{
-		map_line = info_ptr->map[xx++];
+		map_line = info_ptr->map[xx];
 		yy = 0;
 		while (map_line[yy])
 		{
 			if (ft_isalpha(map_line[yy]))
 			{
-				info_ptr->pos.y = yy;
-				info_ptr->pos.x = xx;
+				info_ptr->pos.y = yy + 1;
+				info_ptr->pos.x = xx + 1;
 				info_ptr->orient = map_line[yy];
 				map_line[yy] = '0';
 				return_value++;
 			}
 			yy++;
 		}
+		xx++;
 	}
 	return (return_value);
 }
