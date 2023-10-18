@@ -6,7 +6,7 @@
 /*   By: gasouza <gasouza@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 10:35:32 by gasouza           #+#    #+#             */
-/*   Updated: 2023/09/22 15:51:06 by gasouza          ###   ########.fr       */
+/*   Updated: 2023/10/17 21:10:45 by gasouza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	render_the_screen(t_game *game)
 {
 	clean_the_screen(game);
 	raycasting(game);
+	display_minimap(game);
 	mlx_put_image_to_window(game->mlx, game->window, game->screen.mlx, 0, 0);
 }
 

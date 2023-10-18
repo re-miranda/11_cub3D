@@ -6,7 +6,7 @@
 /*   By: gasouza <gasouza@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 21:51:27 by gasouza           #+#    #+#             */
-/*   Updated: 2023/09/22 21:48:15 by gasouza          ###   ########.fr       */
+/*   Updated: 2023/10/17 21:10:33 by gasouza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ void	game_destroy(t_game *game);
 int		key_listener(int key, t_game *game);
 // Render the game screen with your current status
 void	render_the_screen(t_game *game);
+void	display_minimap(t_game *game);
 
 // Raycasting
 //
