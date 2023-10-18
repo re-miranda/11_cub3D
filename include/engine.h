@@ -6,7 +6,7 @@
 /*   By: gasouza <gasouza@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 21:51:27 by gasouza           #+#    #+#             */
-/*   Updated: 2023/10/18 19:54:53 by gasouza          ###   ########.fr       */
+/*   Updated: 2023/10/18 20:34:43 by gasouza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ int		mouse_listener(int button, int x, int y, t_game *game);
 void	render_the_screen(t_game *game);
 // Display minimap on screen
 void	display_minimap(t_game *game);
+// Display player direction on screen
+void display_direction(t_game *game);
 
 // Raycasting
 //
