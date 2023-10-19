@@ -1,6 +1,7 @@
 #include "criterion/criterion.h"
 #include "cub3d.h"
 #include "parse.h"
+#define ASCII_ZERO_OFFSET 48
 
 static		t_map_info info;
 static int	result;
@@ -17,6 +18,15 @@ void setup_7(void)
 	info.map[4] = ft_strdup("1000001");
 	info.map[5] = ft_strdup("1000001");
 	info.map[6] = ft_strdup("1111111");
+
+	int y;
+	int x = info.m_height;
+	while (x--)
+	{
+		y = info.m_width;
+		while (y--)
+			info.map[x][y] -= ASCII_ZERO_OFFSET;
+	}
 }
 
 void	teardown_7(void)
