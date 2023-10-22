@@ -6,7 +6,7 @@
 /*   By: gasouza <gasouza@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 14:39:32 by gasouza           #+#    #+#             */
-/*   Updated: 2023/09/22 10:30:02 by gasouza          ###   ########.fr       */
+/*   Updated: 2023/10/22 14:17:36 by gasouza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,14 @@
 static void	game_screen_image_buffer_create(t_game *game);
 static void	game_set_default_values(t_game *game);
 static int	game_mlx_setup(t_game *game);
+static void	game_set_orientation(t_game *game);
 
 int	game_setup(t_game *game)
 {
 	game_set_default_values(game);
 	if (!game_mlx_setup(game))
 		return (0);
+	game_set_orientation(game);
 	game_screen_image_buffer_create(game);
 	return (1);
 }
@@ -49,6 +51,31 @@ static void	game_set_default_values(t_game *game)
 	game->mmap_zoom = MMAP_MIN_ZOOM;
 	game->rot_speed = 0.03;
 	game->move_speed = 0.08;
+}
+
+static void	game_set_orientation(t_game *game)
+{
+	if (game->info.orient == 'E')
+	{
+		dir_set_x(game, 0);
+		dir_set_y(game, 1);
+		fov_set_x(game, 0.6);
+		fov_set_y(game, 0);
+	}
+	if (game->info.orient == 'S')
+	{
+		dir_set_x(game, 1);
+		dir_set_y(game, 0);
+		fov_set_x(game, 0);
+		fov_set_y(game, -0.6);
+	}
+	if (game->info.orient == 'W')
+	{
+		dir_set_x(game, 0);
+		dir_set_y(game, -1);
+		fov_set_x(game, -0.6);
+		fov_set_y(game, 0);
+	}
 }
 
 static void	game_screen_image_buffer_create(t_game *game)
