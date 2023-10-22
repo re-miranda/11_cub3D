@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   display_derection.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gasouza <gasouza@student.42sp.org.br>      +#+  +:+       +#+        */
+/*   By: rmiranda <rmiranda@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 20:31:43 by gasouza           #+#    #+#             */
-/*   Updated: 2023/10/18 20:55:46 by gasouza          ###   ########.fr       */
+/*   Updated: 2023/10/22 15:31:47 by rmiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void	display_direction(t_game *game)
 		}
 		x++;
 	}
+	mlx_put_image_to_window(game->mlx, game->window, game->screen.mlx, 0, 0);
 	print_info(game, center.y - 3, center.x - 16, "N");
 	print_info(game, center.y - 2, center.x + 24, "S");
 	print_info(game, center.y - 22, center.x + 4, "W");
