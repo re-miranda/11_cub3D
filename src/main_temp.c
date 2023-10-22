@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_temp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gasouza <gasouza@student.42sp.org.br>      +#+  +:+       +#+        */
+/*   By: rmiranda <rmiranda@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 09:01:33 by gasouza           #+#    #+#             */
-/*   Updated: 2023/10/18 20:05:45 by gasouza          ###   ########.fr       */
+/*   Updated: 2023/10/22 13:55:45 by rmiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,10 @@ int	main(int argc, char *argv[])
 
 	// Game main loop and config
 	// ---
-	render_the_screen(&game);
-	mlx_hook(game.window, 2, 1L<<0, key_listener, &game); //keypess
+	mlx_hook(game.window, KeyPress, KeyPressMask, key_press_listener, &game); //keypess
+	mlx_hook(game.window, KeyRelease, KeyReleaseMask, key_release_listener, &game); //keypess
 	mlx_hook(game.window, 4, 1L<<2, mouse_listener, &game); //mouse listener
-	mlx_put_image_to_window(game.mlx, game.window, game.screen.mlx, 0, 0);
+	mlx_loop_hook(game.mlx, loop_function, &game);
 	mlx_loop(game.mlx);
 	// ---
 

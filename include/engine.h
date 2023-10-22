@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   engine.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gasouza <gasouza@student.42sp.org.br>      +#+  +:+       +#+        */
+/*   By: rmiranda <rmiranda@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 21:51:27 by gasouza           #+#    #+#             */
-/*   Updated: 2023/10/18 20:34:43 by gasouza          ###   ########.fr       */
+/*   Updated: 2023/10/22 14:01:06 by rmiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,29 @@ void	player_move_right(t_game *game);
 void	fov_rotate_left(t_game *game);
 // Rotate field of view to right
 void	fov_rotate_right(t_game *game);
+// Set / Unset move player to up
+void	set_player_move_up(t_game *game);
+void	unset_player_move_up(t_game *game);
+// Set / Unset move player to down
+void	set_player_move_down(t_game *game);
+void	unset_player_move_down(t_game *game);
+// Set / Unset move player to left
+void	set_player_move_left(t_game *game);
+void	unset_player_move_left(t_game *game);
+// Set / Unset move player to right
+void	set_player_move_right(t_game *game);
+void	unset_player_move_right(t_game *game);
+// Set / Unset motate field of view to left
+void	set_fov_rotate_left(t_game *game);
+void	unset_fov_rotate_left(t_game *game);
+// Set / Unset motate field of view to right
+void	set_fov_rotate_right(t_game *game);
+void	unset_fov_rotate_right(t_game *game);
 
 // Game general functions
 //
-// Load game textures configured at t_map_info
+// Main render function called every frame
+int	loop_function(t_game *game);
 // @exception Don't destroy mlx images when errors occur
 // @return 1 when success and 0 when fail to load any image
 int		game_textures_load(t_game *game);
@@ -43,7 +62,8 @@ int		game_setup(t_game *game);
 // Destroy game screen buffer image, window, display and mlx
 void	game_destroy(t_game *game);
 // Perform keys listener
-int		key_listener(int key, t_game *game);
+int		key_press_listener(int key, t_game *game);
+int		key_release_listener(int key, t_game *game);
 // Perform mouse listener
 int		mouse_listener(int button, int x, int y, t_game *game);
 // Render the game screen with your current status

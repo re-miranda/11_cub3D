@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_setup.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gasouza <gasouza@student.42sp.org.br>      +#+  +:+       +#+        */
+/*   By: rmiranda <rmiranda@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 14:39:32 by gasouza           #+#    #+#             */
-/*   Updated: 2023/09/22 10:30:02 by gasouza          ###   ########.fr       */
+/*   Updated: 2023/10/22 01:38:09 by rmiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ static void	game_set_default_values(t_game *game)
 	game->mmap_zoom = MMAP_MIN_ZOOM;
 	game->rot_speed = 0.03;
 	game->move_speed = 0.08;
+	game->runtime_action = 0;
 }
 
 static void	game_screen_image_buffer_create(t_game *game)
