@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   define.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmiranda <rmiranda@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gasouza <gasouza@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 15:26:33 by rmiranda          #+#    #+#             */
-/*   Updated: 2023/10/22 14:03:57 by rmiranda         ###   ########.fr       */
+/*   Updated: 2023/10/22 14:35:08 by gasouza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,12 @@
 // Mouse scroll down button number
 # define MOUSE_SCROLL_DOWN 5
 
+// Game Speed
+//
+// Movement speed
+# define MOV_SPEED 0.008
+// Field of view rotation speed
+# define ROT_SPEED 0.005
 
 // Key Maps definition
 
