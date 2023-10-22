@@ -6,7 +6,7 @@
 /*   By: rmiranda <rmiranda@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 12:25:46 by rmiranda          #+#    #+#             */
-/*   Updated: 2023/10/17 21:56:14 by rmiranda         ###   ########.fr       */
+/*   Updated: 2023/10/22 15:57:53 by rmiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -194,8 +194,8 @@ static int	get_orient(t_map_info *info_ptr)
 		{
 			if (ft_isalpha(map_line[yy]))
 			{
-				info_ptr->pos.y = yy + 1;
-				info_ptr->pos.x = xx + 1;
+				info_ptr->pos.y = yy + 0.5;
+				info_ptr->pos.x = xx + 0.5;
 				info_ptr->orient = map_line[yy];
 				map_line[yy] = '0';
 				return_value++;
