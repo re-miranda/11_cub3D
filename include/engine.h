@@ -6,7 +6,7 @@
 /*   By: rmiranda <rmiranda@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 21:51:27 by gasouza           #+#    #+#             */
-/*   Updated: 2023/10/22 14:01:06 by rmiranda         ###   ########.fr       */
+/*   Updated: 2023/10/22 17:38:22 by rmiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,6 @@ void	unset_fov_rotate_right(t_game *game);
 
 // Game general functions
 //
-// Main render function called every frame
-int	loop_function(t_game *game);
 // @exception Don't destroy mlx images when errors occur
 // @return 1 when success and 0 when fail to load any image
 int		game_textures_load(t_game *game);
