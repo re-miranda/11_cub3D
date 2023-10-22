@@ -6,7 +6,7 @@
 /*   By: rmiranda <rmiranda@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 15:26:33 by rmiranda          #+#    #+#             */
-/*   Updated: 2023/10/22 16:33:00 by rmiranda         ###   ########.fr       */
+/*   Updated: 2023/10/22 18:09:16 by rmiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -166,7 +166,6 @@ typedef struct s_img {
 // @param mmap minimap enable/disable
 // @param rot_speed rotation speed
 // @param move_speed movimentation speed
-// @param runtime_action movements to be performed at every loop
 typedef struct s_game {
 	void		*mlx;
 	void		*window;
@@ -181,16 +180,7 @@ typedef struct s_game {
 	int			mouse_rot;
 	double		rot_speed;
 	double		move_speed;
-	int			runtime_action;
 }	t_game;
-
-// runtime_action defines
-# define MOVE_UP (1 << 0)
-# define MOVE_DOWN (1 << 1)
-# define MOVE_LEFT (1 << 2)
-# define MOVE_RIGHT (1 << 3)
-# define LOOK_LEFT (1 << 4)
-# define LOOK_RIGHT (1 << 5)
 
 // Raycasting information structure
 //
