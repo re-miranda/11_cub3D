@@ -6,7 +6,7 @@
 /*   By: rmiranda <rmiranda@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 21:51:27 by gasouza           #+#    #+#             */
-/*   Updated: 2023/10/22 17:38:22 by rmiranda         ###   ########.fr       */
+/*   Updated: 2023/10/24 00:19:43 by rmiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	render_the_screen(t_game *game);
 // Display minimap on screen
 void	display_minimap(t_game *game);
 // Display player direction on screen
-void display_direction(t_game *game);
+void	display_direction(t_game *game);
 
 // Raycasting
 //

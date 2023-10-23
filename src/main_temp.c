@@ -6,7 +6,7 @@
 /*   By: rmiranda <rmiranda@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 09:01:33 by gasouza           #+#    #+#             */
-/*   Updated: 2023/10/22 18:07:14 by rmiranda         ###   ########.fr       */
+/*   Updated: 2023/10/24 00:18:47 by rmiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	main(int argc, char *argv[])
 
 	// Game main loop and config
 	// ---
-	mlx_hook(game.window, KeyPress, KeyPressMask, key_press_listener, &game); //keypess
+	mlx_hook(game.window, 2, (1L<<0), key_press_listener, &game); //keypess
 	mlx_hook(game.window, 4, 1L<<2, mouse_listener, &game); //mouse listener
 	render_the_screen(&game);
 	mlx_loop(game.mlx);

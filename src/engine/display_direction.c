@@ -1,17 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   display_derection.c                                :+:      :+:    :+:   */
+/*   display_direction.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rmiranda <rmiranda@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 20:31:43 by gasouza           #+#    #+#             */
-/*   Updated: 2023/10/22 15:31:47 by rmiranda         ###   ########.fr       */
+/*   Updated: 2023/10/24 00:27:35 by rmiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+static void	print_info_x4(t_game *game, t_ivect center);
 static void	print_info(t_game *game, int x, int y, char *info);
 static void	calculate_center(t_ivect *center, t_game *game);
 
@@ -39,6 +40,11 @@ void	display_direction(t_game *game)
 		x++;
 	}
 	mlx_put_image_to_window(game->mlx, game->window, game->screen.mlx, 0, 0);
+	print_info_x4(game, center);
+}
+
+static void	print_info_x4(t_game *game, t_ivect center)
+{
 	print_info(game, center.y - 3, center.x - 16, "N");
 	print_info(game, center.y - 2, center.x + 24, "S");
 	print_info(game, center.y - 22, center.x + 4, "W");
