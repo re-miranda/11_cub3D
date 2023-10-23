@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gasouza <gasouza@student.42sp.org.br>      +#+  +:+       +#+        */
+/*   By: rmiranda <rmiranda@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 13:23:34 by rmiranda          #+#    #+#             */
-/*   Updated: 2023/10/12 13:41:37 by gasouza          ###   ########.fr       */
+/*   Updated: 2023/10/23 23:51:33 by rmiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,6 @@ int	parse(t_map_info *info_ptr, char *map_path)
 	if (!success_flag && parse_getter(info_ptr, fd))
 		success_flag = printf("Failed to load parser: ");
 	close(fd);
-	// if (!success_flag && textures_validation(info_ptr))
-	// 	success_flag = printf("Failed to validate textures: ");
 	if (!success_flag && map_validation(info_ptr))
 		success_flag = printf("Failed to validate map: ");
 	if (success_flag)
@@ -80,7 +78,6 @@ static int	parse_getter(t_map_info *info_ptr, int map_fd)
 		;
 	return (error_flag);
 }
-
 
 static char	*get_nl(int fd, int skip_nl)
 {

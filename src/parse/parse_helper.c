@@ -6,7 +6,7 @@
 /*   By: rmiranda <rmiranda@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 13:27:17 by rmiranda          #+#    #+#             */
-/*   Updated: 2023/10/11 11:49:07 by rmiranda         ###   ########.fr       */
+/*   Updated: 2023/10/24 00:03:15 by rmiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 static int	add_path(char *line, char **dest);
 static int	add_color(char *line, int *color_check, int *color);
 static int	str_intrgb(char *line);
+static int	add_next_instruction_extention(char *line, t_map_info *info_ptr);
 
 int	add_next_instruction(char *line, t_map_info *info_ptr)
 {
@@ -38,7 +39,12 @@ int	add_next_instruction(char *line, t_map_info *info_ptr)
 		if (add_path(ft_strdup(line + 3), &info_ptr->path_ea))
 			return (1);
 	}
-	else if (!ft_strncmp("F ", line, 2))
+	return (add_next_instruction_extention(line, info_ptr));
+}
+
+static int	add_next_instruction_extention(char *line, t_map_info *info_ptr)
+{
+	if (!ft_strncmp("F ", line, 2))
 	{
 		if (add_color(line + 2, &info_ptr->color_f_check, &info_ptr->color_f))
 			return (1);
@@ -56,24 +62,6 @@ static int	add_path(char *line, char **dest)
 	if (!line || dest[0])
 		return (1);
 	dest[0] = line;
-	return (0);
-}
-
-int	add_line_to_map(t_map_info *info_ptr, char *line)
-{
-	char	**swap;
-	int		new_size;
-
-	swap = info_ptr->map;
-	new_size = info_ptr->m_height + 1;
-	if (!line)
-		return (1);
-	info_ptr->map = ft_calloc(new_size, sizeof(char *));
-	ft_memmove(info_ptr->map, swap, (new_size - 1) * sizeof(char *));
-	if (swap)
-		free(swap);
-	info_ptr->map[new_size - 1] = ft_strdup(line);
-	info_ptr->m_height = new_size;
 	return (0);
 }
 
