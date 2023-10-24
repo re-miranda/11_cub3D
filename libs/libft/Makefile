@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: gasouza <gasouza@student.42sp.org.br>      +#+  +:+       +#+         #
+#    By: rmiranda <rmiranda@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/06 14:02:53 by gasouza           #+#    #+#              #
-#    Updated: 2023/03/22 09:41:04 by gasouza          ###   ########.fr        #
+#    Updated: 2023/10/24 16:08:56 by rmiranda         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ SRCS_F	= 	ft_isalpha.c	ft_isdigit.c	ft_isalnum.c	ft_isascii.c	\
 			ft_atoi.c		ft_strdup.c		ft_calloc.c		ft_strtrim.c	\
 			ft_substr.c		ft_strjoin.c	ft_split.c		ft_itoa.c		\
 		  	ft_striteri.c	ft_strmapi.c	ft_putchar_fd.c	ft_putstr_fd.c	\
-			ft_putendl_fd.c	ft_putnbr_fd.c
+			ft_putendl_fd.c	ft_putnbr_fd.c	ft_atoi_safe.c
 			
 SRCS	= 	$(addprefix $(SRCS_D)/, $(SRCS_F))
 

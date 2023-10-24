@@ -6,7 +6,7 @@
 /*   By: rmiranda <rmiranda@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 09:01:33 by gasouza           #+#    #+#             */
-/*   Updated: 2023/10/23 21:41:53 by rmiranda         ###   ########.fr       */
+/*   Updated: 2023/10/24 16:34:14 by rmiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	main(int argc, char *argv[])
 
 	if (argc != 2 && printf("Usage: ./cub3d PATH_TO_MAP\n"))
 		return (-1);
-	if (parse(&game.info, argv[1]) && printf("Error:\n%s", game.info.err_msg))
+	if (parse(&game.info, argv[1]))
 		return (-2);
 	if (!game_setup(&game))
 	{

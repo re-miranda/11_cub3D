@@ -6,7 +6,7 @@
 /*   By: rmiranda <rmiranda@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 13:23:34 by rmiranda          #+#    #+#             */
-/*   Updated: 2023/10/23 21:35:36 by rmiranda         ###   ########.fr       */
+/*   Updated: 2023/10/24 16:35:32 by rmiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ int	parse(t_map_info *info_ptr, char *map_path)
 		success_flag = 1;
 	if (success_flag)
 		parse_destroy(*info_ptr);
+	if (success_flag)
+		printf("Error: Could not parse the map\n");
 	return (success_flag);
 }
 

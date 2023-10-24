@@ -6,7 +6,7 @@
 /*   By: rmiranda <rmiranda@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 13:27:17 by rmiranda          #+#    #+#             */
-/*   Updated: 2023/10/23 20:50:13 by rmiranda         ###   ########.fr       */
+/*   Updated: 2023/10/24 16:37:28 by rmiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,15 +71,24 @@ static int	add_path(char *line, char **dest)
 
 static int	add_color(char *line, int *color_check, int *color)
 {
+	int	value;
+
 	if (color_check[0])
 		return (1);
-	color[0] = str_intrgb(line);
+	if (!color_syntax_check(line))
+		return (1);
+	value = str_intrgb(line);
+	if (value == -1)
+		return (1);
+	color[0] = value;
 	color_check[0] = 1;
 	return (0);
 }
 
 static int	str_intrgb(char *line)
 {
+	int	overflow_flag;
+	int	atoi_result;
 	int	index;
 	int	color_value;
 
@@ -87,12 +96,18 @@ static int	str_intrgb(char *line)
 	color_value = 0;
 	while (index)
 	{
-		color_value = ((ft_atoi(line) << index) | color_value);
-		while (ft_isdigit(line[0]))
+		overflow_flag = ft_atoi_safe(line, &atoi_result);
+		if (overflow_flag || atoi_result > 255)
+			return (-1);
+		color_value = ((atoi_result << index) | color_value);
+		while (line[0] != ',')
 			line++;
 		line++;
 		index -= 8;
 	}
-	color_value = ((ft_atoi(line)) | color_value);
+	overflow_flag = ft_atoi_safe(line, &atoi_result);
+	if (overflow_flag || atoi_result > 255)
+		return (-1);
+	color_value = (atoi_result | color_value);
 	return (color_value);
 }

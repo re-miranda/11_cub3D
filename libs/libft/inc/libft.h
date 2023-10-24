@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gasouza <gasouza@student.42sp.org.br>      +#+  +:+       +#+        */
+/*   By: rmiranda <rmiranda@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 14:01:14 by gasouza           #+#    #+#             */
-/*   Updated: 2023/03/22 17:29:12 by gasouza          ###   ########.fr       */
+/*   Updated: 2023/10/24 16:08:32 by rmiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ void	ft_striteri(char *str, void (*f)(unsigned int, char *));
 char	*ft_strmapi(const char *str, char (*f)(unsigned int, char));
 
 // Numbers functions
+int		ft_atoi_safe(char *str, int *result_ptr);
 int		ft_atoi(const char *str);
 char	*ft_itoa(int n);
 

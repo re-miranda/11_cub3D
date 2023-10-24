@@ -6,7 +6,7 @@
 /*   By: rmiranda <rmiranda@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 15:26:33 by rmiranda          #+#    #+#             */
-/*   Updated: 2023/10/23 21:30:46 by rmiranda         ###   ########.fr       */
+/*   Updated: 2023/10/23 22:00:03 by rmiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,7 +130,6 @@ typedef struct s_map_info {
 	int		m_width;
 	char	orient;
 	t_vect	pos;
-	char	*err_msg;
 }	t_map_info;
 
 // Image information structure

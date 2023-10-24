@@ -6,7 +6,7 @@
 /*   By: rmiranda <rmiranda@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 16:03:07 by rmiranda          #+#    #+#             */
-/*   Updated: 2023/10/23 21:16:59 by rmiranda         ###   ########.fr       */
+/*   Updated: 2023/10/24 14:55:31 by rmiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,6 @@ char	**normalize_map(t_map_info *info_ptr);
 int		assert_is_not_surrounded_by_wall(t_map_info info);
 void	space_injest_func(unsigned int nb, char *c);
 void	parse_destroy(t_map_info info);
+int		color_syntax_check(char *line);
 
 #endif
