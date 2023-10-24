@@ -14,7 +14,7 @@ NAME 		= cub3d
 RUN_MAP 	= map/big_maze.cub
 
 SRC_DIR 	= src
-MAIN_SRC	= $(SRC_DIR)/main_temp.c
+MAIN_SRC	= $(SRC_DIR)/main.c
 MAIN_OBJ	= $(MAIN_SRC:%.c=%.o)
 SRC 		+= $(wildcard $(SRC_DIR)/engine/*.c)
 SRC 		+= $(wildcard $(SRC_DIR)/helpers/*.c)
