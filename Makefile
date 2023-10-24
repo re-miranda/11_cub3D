@@ -6,11 +6,11 @@
 #    By: gasouza <gasouza@student.42sp.org.br>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/12 13:01:11 by gasouza           #+#    #+#              #
-#    Updated: 2023/10/18 19:47:42 by gasouza          ###   ########.fr        #
+#    Updated: 2023/10/24 08:47:47 by gasouza          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME 		= cub3d
+NAME 		= cub3D
 RUN_MAP 	= map/big_maze.cub
 
 SRC_DIR 	= src
