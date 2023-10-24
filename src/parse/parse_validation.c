@@ -6,7 +6,7 @@
 /*   By: rmiranda <rmiranda@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 12:25:46 by rmiranda          #+#    #+#             */
-/*   Updated: 2023/10/24 00:04:17 by rmiranda         ###   ########.fr       */
+/*   Updated: 2023/10/23 21:35:06 by rmiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ int	map_validation(t_map_info *info_ptr)
 
 	index = 0;
 	if (lexical_analysis(info_ptr->map, info_ptr->m_height))
-		return (printf("Invalid character or empty line in map: "));
+		return (1);
 	if (get_orient(info_ptr) != 1)
-		return (printf("There must be 1 instruction in the map: "));
+		return (1);
 	while (index < info_ptr->m_height)
 	{
 		if ((size_t)info_ptr->m_width < ft_strlen(info_ptr->map[index]))
@@ -32,7 +32,7 @@ int	map_validation(t_map_info *info_ptr)
 	}
 	info_ptr->map = normalize_map(info_ptr);
 	if (assert_is_not_surrounded_by_wall(info_ptr[0]))
-		return (printf("Map must be surrounded by walls: "));
+		return (1);
 	return (0);
 }
 

@@ -6,13 +6,12 @@
 /*   By: rmiranda <rmiranda@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 13:23:34 by rmiranda          #+#    #+#             */
-/*   Updated: 2023/10/23 23:51:33 by rmiranda         ###   ########.fr       */
+/*   Updated: 2023/10/23 21:35:36 by rmiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parse.h"
 
-static void	abort_handler(t_map_info info);
 static int	parse_getter(t_map_info *info_ptr, int map_fd);
 static char	*get_nl(int fd, int skip_nl);
 static int	assert_completeness(t_map_info info);
@@ -25,21 +24,20 @@ int	parse(t_map_info *info_ptr, char *map_path)
 	success_flag = 0;
 	fd = open(map_path, O_RDONLY);
 	if (fd == -1)
-		success_flag = printf("Failed to open file: ");
+		success_flag = 1;
 	ft_memset(info_ptr, 0, sizeof(t_map_info));
 	if (!success_flag && parse_getter(info_ptr, fd))
-		success_flag = printf("Failed to load parser: ");
+		success_flag = 1;
 	close(fd);
 	if (!success_flag && map_validation(info_ptr))
-		success_flag = printf("Failed to validate map: ");
+		success_flag = 1;
 	if (success_flag)
-		abort_handler(*info_ptr);
+		parse_destroy(*info_ptr);
 	return (success_flag);
 }
 
-static void	abort_handler(t_map_info info)
+void	parse_destroy(t_map_info info)
 {
-	printf("Aborting operation: ");
 	if (info.path_ea)
 		free(info.path_ea);
 	if (info.path_no)

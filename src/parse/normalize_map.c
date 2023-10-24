@@ -6,7 +6,7 @@
 /*   By: rmiranda <rmiranda@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 23:49:49 by rmiranda          #+#    #+#             */
-/*   Updated: 2023/10/23 23:58:16 by rmiranda         ###   ########.fr       */
+/*   Updated: 2023/10/23 21:34:38 by rmiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	assert_is_not_surrounded_by_wall(t_map_info info)
 		while (yy < info.m_width)
 		{
 			if (assert_is_exposed_floor(info, xx, yy))
-				return (printf("Failed on map line %i char %i: ", ++xx, ++yy));
+				return (1);
 			yy++;
 		}
 		xx++;

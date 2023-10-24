@@ -6,7 +6,7 @@
 /*   By: rmiranda <rmiranda@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 13:27:17 by rmiranda          #+#    #+#             */
-/*   Updated: 2023/10/24 00:03:15 by rmiranda         ###   ########.fr       */
+/*   Updated: 2023/10/23 20:50:13 by rmiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,9 @@ int	add_next_instruction(char *line, t_map_info *info_ptr)
 		if (add_path(ft_strdup(line + 3), &info_ptr->path_ea))
 			return (1);
 	}
-	return (add_next_instruction_extention(line, info_ptr));
+	else
+		return (add_next_instruction_extention(line, info_ptr));
+	return (0);
 }
 
 static int	add_next_instruction_extention(char *line, t_map_info *info_ptr)
@@ -54,6 +56,8 @@ static int	add_next_instruction_extention(char *line, t_map_info *info_ptr)
 		if (add_color(line + 2, &info_ptr->color_c_check, &info_ptr->color_c))
 			return (1);
 	}
+	else
+		return (1);
 	return (0);
 }
 

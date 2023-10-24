@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_destroy.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gasouza <gasouza@student.42sp.org.br>      +#+  +:+       +#+        */
+/*   By: rmiranda <rmiranda@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 15:47:18 by gasouza           #+#    #+#             */
-/*   Updated: 2023/09/22 09:19:51 by gasouza          ###   ########.fr       */
+/*   Updated: 2023/10/23 21:18:54 by rmiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,4 +18,5 @@ void	game_destroy(t_game *game)
 	mlx_destroy_window(game->mlx, game->window);
 	mlx_destroy_display(game->mlx);
 	free(game->mlx);
+	parse_destroy(game->info);
 }
