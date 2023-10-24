@@ -6,7 +6,7 @@
 /*   By: gasouza <gasouza@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 15:30:10 by gasouza           #+#    #+#             */
-/*   Updated: 2023/03/25 10:12:43 by gasouza          ###   ########.fr       */
+/*   Updated: 2023/10/24 08:52:59 by gasouza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ size_t	copy_str(char *dst, const char *src, size_t size)
 
 	len = get_strlen(src);
 	if (size--)
-	{		
+	{
 		while (size-- && *src)
 			*dst++ = *src++;
 		*dst = '\0';

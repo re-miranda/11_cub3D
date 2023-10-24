@@ -6,7 +6,7 @@
 /*   By: gasouza <gasouza@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 15:13:01 by gasouza           #+#    #+#             */
-/*   Updated: 2022/04/28 10:20:45 by gasouza          ###   ########.fr       */
+/*   Updated: 2023/10/24 08:51:48 by gasouza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ char	**ft_split(const char *s, char c)
 				new = resize(new, ft_substr(s, 0, len));
 				s += len;
 			}
-		}	
+		}
 	}
 	return (new);
 }

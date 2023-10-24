@@ -6,7 +6,7 @@
 /*   By: gasouza <gasouza@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 19:24:06 by gasouza           #+#    #+#             */
-/*   Updated: 2022/04/30 23:22:30 by gasouza          ###   ########.fr       */
+/*   Updated: 2023/10/24 08:52:13 by gasouza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <stdlib.h>
 
 void	*ft_calloc(size_t nmemb, size_t size)
-{	
+{
 	void	*ptr;
 	size_t	ptr_size;
 
