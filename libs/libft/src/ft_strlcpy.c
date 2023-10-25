@@ -6,7 +6,7 @@
 /*   By: gasouza <gasouza@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 22:06:41 by gasouza           #+#    #+#             */
-/*   Updated: 2022/04/27 09:41:57 by gasouza          ###   ########.fr       */
+/*   Updated: 2023/10/24 08:51:35 by gasouza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 
 	len = ft_strlen(src);
 	if (size--)
-	{		
+	{
 		while (size-- && *src)
 			*dst++ = *src++;
 		*dst = '\0';
