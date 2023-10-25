@@ -6,7 +6,7 @@
 /*   By: rmiranda <rmiranda@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 13:27:17 by rmiranda          #+#    #+#             */
-/*   Updated: 2023/10/24 16:37:28 by rmiranda         ###   ########.fr       */
+/*   Updated: 2023/10/25 20:21:29 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,14 @@ static int	add_next_instruction_extention(char *line, t_map_info *info_ptr)
 
 static int	add_path(char *line, char **dest)
 {
+	int	trim_counter;
+
+	trim_counter = 0;
 	if (!line || dest[0])
 		return (1);
+	while (line[trim_counter] == ' ')
+		trim_counter++;
+	ft_memmove(line, line + trim_counter, ft_strlen(line + trim_counter) + 1);
 	dest[0] = line;
 	return (0);
 }
