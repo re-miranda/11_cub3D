@@ -6,7 +6,7 @@
 #    By: gasouza <gasouza@student.42sp.org.br>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/12 13:01:11 by gasouza           #+#    #+#              #
-#    Updated: 2023/10/24 08:47:47 by gasouza          ###   ########.fr        #
+#    Updated: 2023/10/24 21:47:58 by gasouza          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,11 +33,8 @@ LIBFT_ARCH 	= $(LIBFT_DIR)/libft.a
 GNL_DIR 	= $(LIBS_DIR)/gnl
 GNL_ARCH 	= $(GNL_DIR)/libgnl.a
 
-MLX_DIR 	= $(LIBS_DIR)/minilibx
-MLX_ARCH 	= $(MLX_DIR)/libmlx.a
-
-LFLAGS 		= -L$(LIBFT_DIR) -lft -L$(GNL_DIR) -lgnl -L$(MLX_DIR) -lmlx -lXext -lX11 -lm
-HFLAGS		= -I$(INCLUDE_DIR) -I$(LIBFT_DIR) -I$(GNL_DIR) -I$(MLX_DIR) 
+LFLAGS 		= -L$(LIBFT_DIR) -lft -L$(GNL_DIR) -lgnl -lmlx -lXext -lX11 -lm
+HFLAGS		= -I$(INCLUDE_DIR) -I$(LIBFT_DIR) -I$(GNL_DIR)
 CFLAGS		= -Wall -Wextra -Werror -g
 
 CC			= gcc
@@ -54,7 +51,7 @@ TESTS_OBJS	= $(TESTS_SRC:%.c=%.o)
 
 all: $(NAME)
 
-$(NAME): $(OBJS) $(MAIN_OBJ) | $(LIBFT_ARCH) $(GNL_ARCH) $(MLX_ARCH)
+$(NAME): $(OBJS) $(MAIN_OBJ) | $(LIBFT_ARCH) $(GNL_ARCH)
 	@echo builded: objects
 	@$(CC) $(CFLAGS) $(OBJS) $(MAIN_OBJ) -o $@ $(LFLAGS) && echo builded: project
 	
@@ -66,9 +63,6 @@ $(LIBFT_ARCH):
 
 $(GNL_ARCH):
 	@make -C $(GNL_DIR) --quiet && echo builded: gnl
-
-$(MLX_ARCH):
-	@make -C $(MLX_DIR) --quiet && echo builded: mlx
 
 run: all
 	@./$(NAME) $(RUN_MAP)
@@ -88,7 +82,6 @@ test: $(OBJS) $(TESTS_OBJS) | $(LIBFT_ARCH) $(GNL_ARCH)
 clean:
 	@make -C $(LIBFT_DIR) clean --quiet && echo cleaned: libft 
 	@make -C $(GNL_DIR) clean --quiet && echo cleaned: gnl
-	@make -C $(MLX_DIR) clean --quiet && echo cleaned: mlx
 	@$(RM) $(OBJS) $(MAIN_OBJ) && echo cleaned: objects
 
 tclean: clean
@@ -98,7 +91,6 @@ fclean: clean
 	@$(RM) $(NAME)
 	@make -C $(LIBFT_DIR) fclean --quiet 
 	@make -C $(GNL_DIR) fclean --quiet 
-	@make -C $(MLX_DIR) fclean --quiet 
 
 re: fclean all
 
