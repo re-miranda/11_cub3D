@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   define.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmiranda <rmiranda@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gasouza <gasouza@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 15:26:33 by rmiranda          #+#    #+#             */
-/*   Updated: 2023/10/23 22:00:03 by rmiranda         ###   ########.fr       */
+/*   Updated: 2023/10/24 22:43:14 by gasouza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,9 @@
 // Game Speed
 //
 // Movement speed
-# define MOV_SPEED 0.02
+# define MOV_SPEED 0.09
 // Field of view rotation speed
-# define ROT_SPEED 0.02
+# define ROT_SPEED 0.05
 
 // Key Maps definition
 
