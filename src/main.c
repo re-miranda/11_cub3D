@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmiranda <rmiranda@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gasouza <gasouza@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 09:01:33 by gasouza           #+#    #+#             */
-/*   Updated: 2023/10/24 16:34:14 by rmiranda         ###   ########.fr       */
+/*   Updated: 2023/10/24 21:58:45 by gasouza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,6 @@ int	main(int argc, char *argv[])
 		game_destroy(&game);
 		return (-1);
 	}
-	mlx_hook(game.window, 2, 1L << 0, key_press_listener, &game);
-	mlx_hook(game.window, 4, 1 << 2, mouse_listener, &game);
-	render_the_screen(&game);
-	mlx_loop(game.mlx);
-	game_textures_destroy(&game);
-	game_destroy(&game);
+	game_loop(&game);
 	return (0);
 }

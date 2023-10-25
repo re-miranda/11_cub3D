@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   engine.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rmiranda <rmiranda@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gasouza <gasouza@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 21:51:27 by gasouza           #+#    #+#             */
-/*   Updated: 2023/10/24 00:19:43 by rmiranda         ###   ########.fr       */
+/*   Updated: 2023/10/24 21:59:50 by gasouza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define ENGINE_H
 
 # include "cub3d.h"
+
+void	game_loop(t_game *game);
 
 // Movements and rotations
 //
