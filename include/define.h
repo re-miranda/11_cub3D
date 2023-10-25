@@ -6,7 +6,7 @@
 /*   By: gasouza <gasouza@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 15:26:33 by rmiranda          #+#    #+#             */
-/*   Updated: 2023/10/24 22:43:14 by gasouza          ###   ########.fr       */
+/*   Updated: 2023/10/24 22:46:50 by gasouza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,9 @@
 // Game Speed
 //
 // Movement speed
-# define MOV_SPEED 0.09
+# define MOV_SPEED 0.03
 // Field of view rotation speed
-# define ROT_SPEED 0.05
+# define ROT_SPEED 0.03
 
 // Key Maps definition
 
