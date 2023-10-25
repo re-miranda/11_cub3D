@@ -6,7 +6,7 @@
 /*   By: gasouza <gasouza@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 10:14:26 by gasouza           #+#    #+#             */
-/*   Updated: 2023/09/22 10:29:46 by gasouza          ###   ########.fr       */
+/*   Updated: 2023/10/24 22:07:51 by gasouza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	game_textures_load(t_game *game)
 		img->mlx = mlx_xpm_file_to_image(game->mlx, path, &img->w, &img->h);
 		if (img->mlx == NULL)
 		{
-			printf("Error when loading texture: %s\n", path);
+			printf("Error\nError when loading texture: %s\n", path);
 			return (0);
 		}
 		img->data = mlx_get_data_addr(img->mlx, &img->bpp, &img->ls, &img->end);
