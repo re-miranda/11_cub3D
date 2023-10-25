@@ -6,7 +6,7 @@
 /*   By: rmiranda <rmiranda@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 13:27:17 by rmiranda          #+#    #+#             */
-/*   Updated: 2023/10/25 20:05:03 by rmiranda         ###   ########.fr       */
+/*   Updated: 2023/10/25 20:11:42 by rmiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static int	add_next_instruction_extention(char *line, t_map_info *info_ptr)
 			return (1);
 		info_ptr->color_f_check = 1;
 	}
-	else if (!ft_strncmp("C ", line, 2) &&  && !info_ptr->color_c_check)
+	else if (!ft_strncmp("C ", line, 2) && !info_ptr->color_c_check)
 	{
 		if (add_color(line + 2, &info_ptr->color_c))
 			return (1);
