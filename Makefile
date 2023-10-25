@@ -6,7 +6,7 @@
 #    By: gasouza <gasouza@student.42sp.org.br>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/12 13:01:11 by gasouza           #+#    #+#              #
-#    Updated: 2023/10/24 21:47:58 by gasouza          ###   ########.fr        #
+#    Updated: 2023/10/24 22:29:04 by gasouza          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,9 +16,34 @@ RUN_MAP 	= map/big_maze.cub
 SRC_DIR 	= src
 MAIN_SRC	= $(SRC_DIR)/main.c
 MAIN_OBJ	= $(MAIN_SRC:%.c=%.o)
-SRC 		+= $(wildcard $(SRC_DIR)/engine/*.c)
-SRC 		+= $(wildcard $(SRC_DIR)/helpers/*.c)
-SRC 		+= $(wildcard $(SRC_DIR)/parse/*.c)
+
+SRC			+= $(SRC_DIR)/engine/display_direction.c
+SRC			+= $(SRC_DIR)/engine/game_destroy.c
+SRC			+= $(SRC_DIR)/engine/game_loop.c
+SRC			+= $(SRC_DIR)/engine/game_setup.c
+SRC			+= $(SRC_DIR)/engine/game_textures.c
+SRC			+= $(SRC_DIR)/engine/key_press_listener.c
+SRC			+= $(SRC_DIR)/engine/minimap.c
+SRC			+= $(SRC_DIR)/engine/mouse_drag_listener.c
+SRC			+= $(SRC_DIR)/engine/mouse_listener.c
+SRC			+= $(SRC_DIR)/engine/player_movement.c
+SRC			+= $(SRC_DIR)/engine/player_rotation.c
+SRC			+= $(SRC_DIR)/engine/raycasting.c
+SRC			+= $(SRC_DIR)/engine/raycasting_calculations.c
+SRC			+= $(SRC_DIR)/engine/raycasting_dda.c
+SRC			+= $(SRC_DIR)/engine/raycasting_draw.c
+SRC			+= $(SRC_DIR)/engine/render_the_screen.c
+SRC			+= $(SRC_DIR)/helpers/config_helper.c
+SRC			+= $(SRC_DIR)/helpers/direction_helper.c
+SRC			+= $(SRC_DIR)/helpers/fov_helper.c
+SRC			+= $(SRC_DIR)/helpers/image_helper.c
+SRC			+= $(SRC_DIR)/helpers/map_helper.c
+SRC			+= $(SRC_DIR)/helpers/positon_helper.c
+SRC			+= $(SRC_DIR)/parse/color_syntax_check.c
+SRC			+= $(SRC_DIR)/parse/normalize_map.c
+SRC			+= $(SRC_DIR)/parse/parse.c
+SRC			+= $(SRC_DIR)/parse/parse_helper.c
+SRC			+= $(SRC_DIR)/parse/parse_validation.c
 
 OBJS 		= $(SRC:%.c=%.o)
 
@@ -64,7 +89,7 @@ $(LIBFT_ARCH):
 $(GNL_ARCH):
 	@make -C $(GNL_DIR) --quiet && echo builded: gnl
 
-run: all
+run: $(NAME)
 	@./$(NAME) $(RUN_MAP)
 
 valgrind: $(NAME)
