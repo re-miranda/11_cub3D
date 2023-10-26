@@ -6,7 +6,7 @@
 #    By: rmiranda <rmiranda@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/12 13:01:11 by gasouza           #+#    #+#              #
-#    Updated: 2023/10/25 20:59:07 by rmiranda         ###   ########.fr        #
+#    Updated: 2023/10/26 02:26:05 by marvin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -71,13 +71,6 @@ RM 			= rm -rf
 
 VALGRIND	= valgrind --leak-check=full --show-leak-kinds=all
 
-CRITERION_DIR = $(LIBS_DIR)/criterion
-
-TESTS_NAME  = tests.run
-TESTS_DIR	= test
-TESTS_SRC	= $(wildcard $(TESTS_DIR)/*.c)
-TESTS_OBJS	= $(TESTS_SRC:%.c=%.o)
-
 all: $(NAME)
 
 $(NAME): $(OBJS) $(MAIN_OBJ) | $(LIBFT_ARCH) $(GNL_ARCH)
@@ -99,23 +92,11 @@ run: $(NAME)
 valgrind: $(NAME)
 	$(VALGRIND) ./$(NAME) $(RUN_MAP)
 
-$(TESTS_DIR)/%.o: $(TESTS_DIR)/%.c
-	@$(CC) $(CFLAGS) $(HFLAGS) -I$(CRITERION_DIR) -c $< -o $@ 
-
-test: $(OBJS) $(TESTS_OBJS) | $(LIBFT_ARCH) $(GNL_ARCH) 
-	@$(CC) $(OBJS) $(TESTS_OBJS) $(LFLAGS) -L$(CRITERION_DIR) -lcriterion -o $(TESTS_NAME)
-	@./$(TESTS_NAME)
-	@echo
-	@$(RM) $(TESTS_NAME)
-
 clean:
 	@make -C $(LIBFT_DIR) clean --quiet && echo cleaned: libft 
 	@make -C $(GNL_DIR) clean --quiet && echo cleaned: gnl
 	@$(RM) $(OBJS) $(MAIN_OBJ) && echo cleaned: objects
 
-tclean: clean
-	@$(RM) $(TESTS_OBJS) && echo test cleaned: objects
-	
 fclean: clean
 	@$(RM) $(NAME)
 	@make -C $(LIBFT_DIR) fclean --quiet 
@@ -123,4 +104,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re run valgrind test
+.PHONY: all clean fclean re run valgrind
