@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: gasouza <gasouza@student.42sp.org.br>      +#+  +:+       +#+         #
+#    By: rmiranda <rmiranda@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/12 13:01:11 by gasouza           #+#    #+#              #
-#    Updated: 2023/10/24 22:29:04 by gasouza          ###   ########.fr        #
+#    Updated: 2023/10/25 20:59:07 by rmiranda         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,7 +48,11 @@ SRC			+= $(SRC_DIR)/parse/parse_validation.c
 OBJS 		= $(SRC:%.c=%.o)
 
 INCLUDE_DIR	= include
-INCLUDE 	= $(wildcard $(INCLUDE_DIR)/*.h)
+INCLUDE 	+= $(INCLUDE_DIR)/cub3d.h
+INCLUDE 	+= $(INCLUDE_DIR)/define.h
+INCLUDE 	+= $(INCLUDE_DIR)/engine.h
+INCLUDE 	+= $(INCLUDE_DIR)/helpers.h
+INCLUDE 	+= $(INCLUDE_DIR)/parse.h
 
 LIBS_DIR 	= libs
 
@@ -62,7 +66,7 @@ LFLAGS 		= -L$(LIBFT_DIR) -lft -L$(GNL_DIR) -lgnl -lmlx -lXext -lX11 -lm
 HFLAGS		= -I$(INCLUDE_DIR) -I$(LIBFT_DIR) -I$(GNL_DIR)
 CFLAGS		= -Wall -Wextra -Werror -g
 
-CC			= gcc
+CC			= cc
 RM 			= rm -rf
 
 VALGRIND	= valgrind --leak-check=full --show-leak-kinds=all
