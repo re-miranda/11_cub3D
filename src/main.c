@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gasouza <gasouza@student.42sp.org.br>      +#+  +:+       +#+        */
+/*   By: rmiranda <rmiranda@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 09:01:33 by gasouza           #+#    #+#             */
-/*   Updated: 2023/10/24 21:58:45 by gasouza          ###   ########.fr       */
+/*   Updated: 2023/10/30 16:23:46 by rmiranda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,9 @@ int	main(int argc, char *argv[])
 
 	if (argc != 2 && printf("Usage: ./cub3d PATH_TO_MAP\n"))
 		return (-1);
+	if (sizeof(argv[1]) < 6
+		|| ft_strncmp(".cub", argv[1] + sizeof(argv[1]) - 5, 5))
+		return (-2);
 	if (parse(&game.info, argv[1]))
 		return (-2);
 	if (!game_setup(&game))
